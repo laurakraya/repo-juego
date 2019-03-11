@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  max-width: 540px;
+}
+
+form {
+  margin-top: 5em;
+  width: 100%;
+}
+
+nav {
+  margin-top: 1em;
+}
+
+.btn-primary {
+  margin-top: 1em;
+}
+
+.fp {
+  margin-left: 130px;
+}
