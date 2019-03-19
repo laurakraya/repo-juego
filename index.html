@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -15,89 +16,92 @@
     <a class="navibar__home-link" href="home.html"><i class="fas fa-home fa-2x"></i></a>
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
     </ul>
   </nav>
   <main class="content" id="home">
-    <div class="presentacion">
+
+    <section class="presentacion">
       <h1 class="presentacion__title">Juego</h1>
       <p class="presentacion__subtitle">Soy un subtítulo</p>
-      <i class="presentacion__arrow-down fas fa-chevron-circle-down fa-4x grow point"></i>
-    </div>
-    <section class="descripcion">
-      <p class="descripcion__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
-        a
-        libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
-        neque,
-        pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue. Aenean
-        facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
-        pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in, pellentesque
-        sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
-      <p class="descripcion__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
-        a
-        libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
-        neque,
-        pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue. Aenean
-        facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
-        pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in, pellentesque
-        sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
-      <p class="descripcion__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
-        a
-        libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
-        neque,
-        pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue. Aenean
-        facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
-        pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in, pellentesque
-        sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
-      <p class="descripcion__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
-        a
-        libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
-        neque,
-        pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue. Aenean
-        facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
-        pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in, pellentesque
-        sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
+      <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
     </section>
-    <section class="login" id="login">
-      <form action="#" method="post">
-        <div class="form-group">
-          <label for="Email">Email</label>
-          <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Ingrese su correo electronico" required>
-          <small id="emailHelp" class="form-text text-muted">La informacion no sera compartida.</small>
+
+    <section class="descripcion" id="descripcion">
+      <div class="descripcion__text">
+        <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
+          a
+          libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
+          neque,
+          pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue.
+          Aenean
+          facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
+          pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in,
+          pellentesque
+          sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
+        <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
+          a
+          libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
+          neque,
+          pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue.
+          Aenean
+          facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
+          pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in,
+          pellentesque
+          sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
+      </div>
+      <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listx!</span></a>
+    </section>
+
+    <section class="login-section" id="login">
+      <form class="form" action="#" method="POST">
+        <h1 class="form__title">Login</h1>
+        <div class="form__group">
+          <label class="form__group__text-label" for="email">Email:</label>
+          <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico"
+            required>
         </div>
-        <div class="form-group">
-          <label for="Pass">Password</label>
-          <input type="password" class="form-control" id="Pass" placeholder="Password">
+        <div class="form__group">
+          <label class="form__group__text-label" for="pass">Contraseña:</label>
+          <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
         </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="Recordar">
-          <label class="form-check-label" for="Recordar">Recordame</label>
-          <span class="fp"><a href="forgetpassword.html">¿Olvido su contraseña?</a></span>
+        <div class="form__group form-check">
+          <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
+          <label class="form-check__label" for="recordar">Recordame</label>
+          <span class="form-check__fp"><a class="form-check__fp__link" href="forgetpassword.html">¿Olvido su
+              contraseña?</a></span>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p>
+        <button type="submit" class="form__btn submit" name="button" value="ingresar">Login</button>
       </form>
     </section>
-    <section class="register" id="register">
-      <form action="#" method="post">
-        <div class="form-group">
-          <label for="usuario">Usuario</label>
-          <input type="user" class="form-control" id="usuario" aria-describedby="userHelp" placeholder="Ingrese su usuario" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingrese su email" required>
-        </div>
-        <div class="form-group">
-          <label for="Pass">Password</label>
-          <input type="password" class="form-control" id="Pass" placeholder="Contraseña" required>
-        </div>
-        <div class="form-group">
-          <label for="Pass">Password</label>
-          <input type="password" class="form-control" id="Pass" placeholder="Confirme contraseña" required>
-        </div>
 
-        <small id="emailHelp" class="form-text text-muted">La informacion no sera compartida.</small>
+    <section class="register-section" id="register">
+      <form class="form" action="#" method="post">
+        <h1 class="form__title">registrate</h1>
+        <div class="form__group">
+          <label class="form__group__text-label" for="name">Nombre</label>
+          <input id="name" class="form__group__text-field" name="name" type="text" placeholder="Ingresá tu nombre"
+            required>
+        </div>
+        <div class="form__group">
+          <label class="form__group__text-label" for="mail">Email</label>
+          <input id="mail" class="form__group__text-field" name="mail" type="email" placeholder="Ingresá tu email"
+            required>
+        </div>
+        <div class="form__group">
+          <label class="form__group__text-label" for="pwd">Contraseña</label>
+          <input id="pwd" class="form__group__text-field" name="pwd" type="password" placeholder="password" required>
+        </div>
+        <div class="form__group form-check">
+          <input id="acept" name="acept" class="form-check__input" type="checkbox" value="yes" required>
+          <label class="form-check__label" for="acept">Acepto los términos y condiciones</label>
+        </div>
+        <button class="form__btn" type="submit" name="">Registrarme</button>
+        <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
+      </form>
     </section>
   </main>
 </body>
