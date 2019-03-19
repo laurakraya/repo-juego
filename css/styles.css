@@ -127,7 +127,6 @@ section {
   align-items: center;
   width: 100%;
   padding: 50px 0px;
-  /* margin: 50px 0px; */
 }
 
 .presentacion {
@@ -158,7 +157,7 @@ section {
 }
 
 .descripcion {
-  padding: 60px 0px;
+  padding: 70px 0px;
   flex-direction: column;
 }
 .descripcion__text {
@@ -241,6 +240,14 @@ section {
 .form-check__fp__link {
   color: #440A7F;
   font-weight: 400;
+}
+
+.form__not-registered {
+  margin-top: 10px;
+}
+.form__not-registered__link {
+  margin-left: 10px;
+  color: #440A7F;
 }
 
 .btn {
