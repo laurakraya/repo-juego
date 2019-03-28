@@ -1,5 +1,5 @@
 /* RESET */
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -78,7 +78,7 @@ body {
   font-size: 12px;
 }
 
-.navibar {
+.navibar  {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -272,6 +272,22 @@ section {
 .point:hover {
   cursor: pointer;
 }
+/**CSS DE LAS PREGUNTAS**/
+
+.preguntas{
+background-color: #9BC434;
+width: 60%;
+height: 60%;
+flex-wrap: wrap;
+}
+.preguntas__pregunta{
+  background-color: black;
+  display: flex;
+  
+}
+
+
+
 
 @media (min-width: 540px) {
   body {
