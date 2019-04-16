@@ -13,8 +13,9 @@ if($_POST){
 
 if(empty($errores)){
 $usuario = armarUsuario($_POST);   //crear usuario//
-guardarUsuario($usuario); }         //guardar usuario//
-header("Location: bienvenida.php");
+guardarUsuario($usuario);          //guardar usuario//
+header("Location:bienvenida.php");}
+
 
 } ?>
 
@@ -45,7 +46,7 @@ header("Location: bienvenida.php");
   <main class="content" id="home">
 
     <section class="presentacion">
-      <h1 class="presentacion__title">Juego</h1>
+      <h1 class="presentacion__title">ContraReloj</h1>
       <p class="presentacion__subtitle">Soy un subtítulo</p>
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
     </section>
@@ -103,7 +104,7 @@ header("Location: bienvenida.php");
 
 
     <section class="register-section" id="register">
-      <form class="form" action="index.php" method="post">
+      <form class="form" action="index.php#register" method="post">
         <h1 class="form__title">Registrate</h1>
         <div class="form__group">
           <label class="form__group__text-label" for="name">Nombre</label>

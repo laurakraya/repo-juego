@@ -175,6 +175,7 @@ section {
 .form {
   width: 100%;
   max-width: 80%;
+  padding-top: 20px;
 }
 .form__title {
   text-align: center;
@@ -283,7 +284,7 @@ flex-wrap: wrap;
 .preguntas__pregunta{
   background-color: black;
   display: flex;
-  
+
 }
 
 
