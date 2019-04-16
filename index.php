@@ -6,18 +6,20 @@ require_once("funciones.php");
 if($_POST){
 
   $errores = validarRegistro($_POST);
-
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
 
-if(empty($errores)){
-$usuario = armarUsuario($_POST);   //crear usuario//
-guardarUsuario($usuario);          //guardar usuario//
-header("Location:bienvenida.php");}
 
+  if(empty($errores)){
+  if(!existeUsuario($_POST["email"])){//
 
-} ?>
+  $usuario = armarUsuario($_POST);   //crear usuario//
+  guardarUsuario($usuario); }          //guardar usuario//
+  header("Location: bienvenida.php");}
+
+  } ?>
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +37,7 @@ header("Location:bienvenida.php");}
 
 <body>
   <nav class="navibar">
-    <a class="navibar__home-link" href="index.html"><i class="fas fa-home fa-2x"></i></a>
+    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>

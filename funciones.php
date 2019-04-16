@@ -26,8 +26,9 @@ $errores["lastName"] = "El apellido debe contener solo letras";}
 if (strlen($datosTrim["email"]) == 0){
 $errores["email"] = "El email no puede estar vacio";}
  else if (filter_var($datosTrim["email"], FILTER_VALIDATE_EMAIL) == false){
-  $errores["email"] = "El formato del email no es valido";
-}
+  $errores["email"] = "El formato del email no es valido";}
+  else if (existeUsuario($datosTrim["email"])){
+  $errores["email"] = "El email ya esta registrado";}
 
 // Validar contraseña //
 if (strlen($datos["pwd"]) == 0){  //Validar sin trim por si hay espacios adredes.//
@@ -65,6 +66,23 @@ function guardarUsuario($user){
   $array["usuarios"][] = $user;
   $array = json_encode($array, JSON_PRETTY_PRINT);
   file_put_contents("base.json", $array);
+}
+
+function buscarEmail($email){
+$usuarios = file_get_contents("base.json");
+$array = json_decode($usuarios, true);
+foreach($array["usuarios"] as $usuario){
+  if ($email == $usuario["email"] ){
+    return $usuario;
+  }
+}
+ return null;
+ }
+
+function existeUsuario ($email){
+
+return buscarEmail($email) !== null;
+
 }
 
  ?>
