@@ -6,17 +6,20 @@ require_once("funciones.php");
 if($_POST){
 
   $errores = validarRegistro($_POST);
-
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
 
-if(empty($errores)){
-$usuario = armarUsuario($_POST);   //crear usuario//
-guardarUsuario($usuario); }         //guardar usuario//
-header("Location: bienvenida.php");
 
-} ?>
+  if(empty($errores)){
+  if(!existeUsuario($_POST["email"])){//
+
+  $usuario = armarUsuario($_POST);   //crear usuario//
+  guardarUsuario($usuario); }          //guardar usuario//
+  header("Location: bienvenida.php");}
+  
+  } ?>
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +106,7 @@ header("Location: bienvenida.php");
 
 
     <section class="register-section" id="register">
-      <form class="form" action="index.php" method="post">
+      <form class="form" action="index.php#register" method="post">
         <h1 class="form__title">Registrate</h1>
         <div class="form__group">
           <label class="form__group__text-label" for="name">Nombre</label>
