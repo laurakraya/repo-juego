@@ -37,6 +37,10 @@ else if ($datos["pwd"] !== $datos["retypepwd"]){ //Validar que las contraseñas 
   $errores["pwd"] = "Las contraseñas no coinciden";
 }
 
+//Validar Terminos y condiciones//
+if(!isset($datos["accepted"])){
+  $errores["accepted"] = "Por favor acepte terminos y condiciones.";}
+
 return $errores ;
 }
 
@@ -84,5 +88,7 @@ function existeUsuario ($email){
 return buscarEmail($email) !== null;
 
 }
+
+
 
  ?>

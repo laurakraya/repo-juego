@@ -17,9 +17,8 @@ if($_POST){
   $usuario = armarUsuario($_POST);   //crear usuario//
   guardarUsuario($usuario); }          //guardar usuario//
   header("Location: bienvenida.php");}
-
   } ?>
- ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,9 +44,7 @@ if($_POST){
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
     </ul>
   </nav>
-  <main class="content" id="home">
-
-    <section class="presentacion">
+  <main class="content" id="home">    
       <h1 class="presentacion__title">ContraReloj</h1>
       <p class="presentacion__subtitle">Soy un subtítulo</p>
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
@@ -151,9 +148,14 @@ if($_POST){
           </div>
       <?php } ?>
         <div class="form__group form-check">
-          <input id="acept" name="acept" class="form-check__input" type="checkbox" value="yes">
-          <label class="form-check__label" for="acept">Acepto los términos y condiciones</label>
+          <input id="accepted" name="accepted" class="form-check__input" type="checkbox" value="yes">
+          <label class="form-check__label" for="accept">Acepto los términos y condiciones</label>
         </div>
+        <?php   if(!empty($errores["accepted"])){ ?>
+          <div class="alert alert-danger" role="alert">
+            <?php echo $errores["accepted"]; ?>
+          </div>
+          <?php } ?>
         <button class="form__btn" type="submit" name="">Registrarme</button>
         <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
       </form>
