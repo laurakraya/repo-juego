@@ -17,7 +17,32 @@ if($_POST){
   $usuario = armarUsuario($_POST);   //crear usuario//
   guardarUsuario($usuario); }          //guardar usuario//
   header("Location: bienvenida.php");}
-  } ?>
+  }
+
+  if(usuarioLogueado()){
+    header("Location:bienvenida.php");
+    exit;
+  }
+    $errores = [];
+
+    if($_POST){
+      //Validar Login
+      $errores = validarLogin($_POST);
+
+      //Si no hay errores
+      if(empty($errores)){
+
+        loguearUsuario($_POST["email"]);
+        //redirigimos a home
+        header("Location:index.php");
+        exit;
+      }
+
+    }
+
+
+
+  ?>
 
 
 <!DOCTYPE html>
@@ -44,8 +69,8 @@ if($_POST){
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
     </ul>
   </nav>
-  <main class="content" id="home"> 
-    <section class="presentacion">   
+  <main class="content" id="home">
+    <section class="presentacion">
       <h1 class="presentacion__title">ContraReloj</h1>
       <p class="presentacion__subtitle">Soy un subtítulo</p>
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
@@ -86,10 +111,22 @@ if($_POST){
           <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico"
             required>
         </div>
+        <?php   if(!empty($errores["name"])){ ?>
+          <div class="alert alert-danger" role="alert">
+      <?php echo $errores["name"]; ?>
+          </div>
+      <?php } ?>
+
         <div class="form__group">
           <label class="form__group__text-label" for="pass">Contraseña:</label>
           <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
         </div>
+        <?php   if(!empty($errores["pwd"])){ ?>
+          <div class="alert alert-danger" role="alert">
+      <?php echo $errores["pwd"]; ?>
+          </div>
+      <?php } ?>       
+
         <div class="form__group form-check">
           <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
           <label class="form-check__label" for="recordar">Recordame</label>
