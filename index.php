@@ -44,7 +44,8 @@ if($_POST){
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
     </ul>
   </nav>
-  <main class="content" id="home">    
+  <main class="content" id="home"> 
+    <section class="presentacion">   
       <h1 class="presentacion__title">ContraReloj</h1>
       <p class="presentacion__subtitle">Soy un subtítulo</p>
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
