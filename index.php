@@ -2,35 +2,36 @@
 
 require_once("funciones.php");
 
+if ($_POST) {
 
-if($_POST){
-
-  $errores = validarRegistro($_POST);
+  $erroresRegistro = validarRegistro($_POST);
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
 
 
-  if(empty($errores)){
-  if(!existeUsuario($_POST["email"])){//
+  if (empty($erroresRegistro)) {
+    if (!existeUsuario($_POST["email"])) { 
 
-  $usuario = armarUsuario($_POST);   //crear usuario//
-  guardarUsuario($usuario); }          //guardar usuario//
-  header("Location: bienvenida.php");}
+      $usuario = armarUsuario($_POST);   //crear usuario//
+      guardarUsuario($usuario);  //guardar usuario//
+      
+    }          
+    header("Location: bienvenida.php");
   }
+}
 
-  if(usuarioLogueado()){
+/*   if(usuarioLogueado()){
     header("Location:bienvenida.php");
     exit;
   }
-    $errores = [];
 
     if($_POST){
       //Validar Login
-      $errores = validarLogin($_POST);
+      $erroresLogin = validarLogin($_POST);
 
       //Si no hay errores
-      if(empty($errores)){
+      if(empty($erroresLogin)){
 
         loguearUsuario($_POST["email"]);
         //redirigimos a home
@@ -38,11 +39,9 @@ if($_POST){
         exit;
       }
 
-    }
+  } */
 
-
-
-  ?>
+?>
 
 
 <!DOCTYPE html>
@@ -54,8 +53,7 @@ if($_POST){
   <title>Inicio</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -108,24 +106,23 @@ if($_POST){
         <h1 class="form__title">Login</h1>
         <div class="form__group">
           <label class="form__group__text-label" for="email">Email:</label>
-          <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico"
-            required>
+          <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico" required>
         </div>
-        <?php   if(!empty($errores["name"])){ ?>
+        <?php if (!empty($erroresLogin["name"])) { ?>
           <div class="alert alert-danger" role="alert">
-      <?php echo $errores["name"]; ?>
+            <?php echo $erroresLogin["name"]; ?>
           </div>
-      <?php } ?>
+        <?php } ?>
 
         <div class="form__group">
           <label class="form__group__text-label" for="pass">Contraseña:</label>
           <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
         </div>
-        <?php   if(!empty($errores["pwd"])){ ?>
+        <?php if (!empty($erroresLogin["pwd"])) { ?>
           <div class="alert alert-danger" role="alert">
-      <?php echo $errores["pwd"]; ?>
+            <?php echo $erroresLogin["pwd"]; ?>
           </div>
-      <?php } ?>       
+        <?php } ?>
 
         <div class="form__group form-check">
           <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
@@ -134,7 +131,7 @@ if($_POST){
               contraseña?</a></span>
         </div>
         <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p>
-        <button type="submit" class="form__btn submit" name="button" value="ingresar">Login</button>
+        <button type="submit" class="form__btn submit" name="submit_login" value="ingresar">Login</button>
         <p class="form__not-registered">¿No tenés cuenta?<a class="form__not-registered__link" href="#register">Registrate</a></p>
       </form>
     </section>
@@ -145,56 +142,62 @@ if($_POST){
         <h1 class="form__title">Registrate</h1>
         <div class="form__group">
           <label class="form__group__text-label" for="name">Nombre</label>
-          <input id="name" class="form__group__text-field" name="name" type="text" value="<?php if(isset($nameOk)){echo $nameOk;} ?>" placeholder="Ingresá tu nombre">
+          <input id="name" class="form__group__text-field" name="name" type="text" value="<?php if (isset($nameOk)) {
+                                                                                            echo $nameOk;
+                                                                                          } ?>" placeholder="Ingresá tu nombre">
         </div>
-      <?php   if(!empty($errores["name"])){ ?>
-        <div class="alert alert-danger" role="alert">
-  <?php echo $errores["name"]; ?>
-        </div>
-    <?php } ?>
+        <?php if (!empty($erroresRegistro["name"])) { ?>
+          <div class="alert alert-danger" role="alert">
+            <?php echo $erroresRegistro["name"]; ?>
+          </div>
+        <?php } ?>
         <div class="form__group">
           <label class="form__group__text-label" for="lastName">Apellido</label>
-          <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="<?php if(isset($lastNameOk)){echo $lastNameOk;} ?>" placeholder="Ingresá tu apellido">
+          <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="<?php if (isset($lastNameOk)) {
+                                                                                                    echo $lastNameOk;
+                                                                                                  } ?>" placeholder="Ingresá tu apellido">
         </div>
-        <?php   if(!empty($errores["lastName"])){ ?>
+        <?php if (!empty($erroresRegistro["lastName"])) { ?>
           <div class="alert alert-danger" role="alert">
-    <?php echo $errores["lastName"]; ?>
+            <?php echo $erroresRegistro["lastName"]; ?>
           </div>
-      <?php } ?>
+        <?php } ?>
         <div class="form__group">
           <label class="form__group__text-label" for="email">Email</label>
-          <input id="email" class="form__group__text-field" name="email" type="email" value="<?php if(isset($emailOk)){echo $emailOk;} ?>" placeholder="Ingresá tu email">
+          <input id="email" class="form__group__text-field" name="email" type="email" value="<?php if (isset($emailOk)) {
+                                                                                                echo $emailOk;
+                                                                                              } ?>" placeholder="Ingresá tu email">
         </div>
-        <?php   if(!empty($errores["email"])){ ?>
+        <?php if (!empty($erroresRegistro["email"])) { ?>
           <div class="alert alert-danger" role="alert">
-    <?php echo $errores["email"]; ?>
+            <?php echo $erroresRegistro["email"]; ?>
           </div>
-      <?php } ?>
+        <?php } ?>
         <div class="form__group">
           <label class="form__group__text-label" for="pwd">Contraseña</label>
-          <input id="pwd" class="form__group__text-field" name="pwd" type="password" placeholder="Password" >
+          <input id="pwd" class="form__group__text-field" name="pwd" type="password" placeholder="Password">
         </div>
 
 
         <div class="form__group">
           <label class="form__group__text-label" for="retypepwd">Repite Contraseña</label>
-          <input id="retypepwd" class="form__group__text-field" name="retypepwd" type="password" placeholder="Password" >
+          <input id="retypepwd" class="form__group__text-field" name="retypepwd" type="password" placeholder="Password">
         </div>
-        <?php   if(!empty($errores["pwd"])){ ?>
+        <?php if (!empty($erroresRegistro["pwd"])) { ?>
           <div class="alert alert-danger" role="alert">
-      <?php echo $errores["pwd"]; ?>
+            <?php echo $erroresRegistro["pwd"]; ?>
           </div>
-      <?php } ?>
+        <?php } ?>
         <div class="form__group form-check">
           <input id="accepted" name="accepted" class="form-check__input" type="checkbox" value="yes">
           <label class="form-check__label" for="accept">Acepto los términos y condiciones</label>
         </div>
-        <?php   if(!empty($errores["accepted"])){ ?>
+        <?php if (!empty($erroresRegistro["accepted"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $errores["accepted"]; ?>
+            <?php echo $erroresRegistro["accepted"]; ?>
           </div>
-          <?php } ?>
-        <button class="form__btn" type="submit" name="">Registrarme</button>
+        <?php } ?>
+        <button class="form__btn" type="submit" name="register">Registrarme</button>
         <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
       </form>
     </section>

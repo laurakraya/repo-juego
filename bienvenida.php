@@ -14,12 +14,12 @@
 
 <body>
   <nav class="navibar">
-    <a class="navibar__home-link" href="index.html"><i class="fas fa-home fa-2x"></i></a>
+    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
     <ul class="navibar__list">
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#home">Inicio</a></li>
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#descripcion">El Juego</a></li>
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#login">Login</a></li>
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#register">Registro</a></li>
     </ul>
   </nav>
   <section>
