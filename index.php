@@ -2,7 +2,7 @@
 
 require_once("funciones.php");
 
-if ($_POST) {
+
 
 
 if($_POST && isset($_POST["register"])){
@@ -20,7 +20,7 @@ if($_POST && isset($_POST["register"])){
       guardarUsuario($usuario);  //guardar usuario//
 
     }
-    header("Location: bienvenida.php");
+    header("Location:bienvenida.php");
   }
 }
 
@@ -28,10 +28,8 @@ if($_POST && isset($_POST["register"])){
    //  header("Location:bienvenida.php");
    //  exit;
 
- }
-
     if($_POST && isset($_POST["login"])){
-          $erroresLogin = validarLogin($_POST);
+    $erroresLogin = validarLogin($_POST);
 
 
       //Si no hay errores
@@ -140,8 +138,6 @@ if($_POST && isset($_POST["register"])){
 
         <button  type="submit" class="form__btn submit" name="login" value="ingresar">Login</button>
 
-        <button type="submit" class="form__btn submit" name="submit_login" value="ingresar">Login</button>
-
         <p class="form__not-registered">¿No tenés cuenta?<a class="form__not-registered__link" href="#register">Registrate</a></p>
         <input type="hidden" name="login" value="">
       </form>
@@ -153,7 +149,7 @@ if($_POST && isset($_POST["register"])){
         <h1 class="form__title">Registrate</h1>
         <div class="form__group">
           <label class="form__group__text-label" for="name">Nombre</label>
-          <input id="name" class="form__group__text-field" name="name" type="text" value=""<?php if (isset($nameOk)) {echo $nameOk;}?>" placeholder="Ingresá tu nombre">
+          <input id="name" class="form__group__text-field" name="name" type="text" value=""<?php if (isset($nameOk)) {echo $nameOk;}?> placeholder="Ingresá tu nombre">
         </div>
         <?php if (!empty($erroresRegistro["name"])) { ?>
           <div class="alert alert-danger" role="alert">
