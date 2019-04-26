@@ -2,9 +2,13 @@
 
 require_once("funciones.php");
 
+//var_dump($_SESSION);
+
+
 if ($_POST && isset($_POST["register"])) {
 
   $errores = validarRegistro($_POST);
+  var_dump($_POST, $errores);
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
@@ -15,6 +19,7 @@ if ($_POST && isset($_POST["register"])) {
 
       $usuario = armarUsuario($_POST);   //crear usuario//
       guardarUsuario($usuario);  //guardar usuario//
+
       header("Location:bienvenida.php");
       exit;
     }
@@ -32,7 +37,7 @@ if ($_POST && isset($_POST["login"])) {
 
     loguearUsuario($_POST["email"]);
     //redirigimos a home
-    header("Location:index.php#descripcion");
+    header("Location:bienvenida.php");
     exit;
   }
 }
@@ -65,6 +70,7 @@ if ($_POST && isset($_POST["login"])) {
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
       <?php endif; ?>
+
     </ul>
   </nav>
   <main class="content" id="home">
@@ -98,15 +104,16 @@ if ($_POST && isset($_POST["login"])) {
           sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
       </div>
       <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listo!</span></a>
-      <?php if (!usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
+      <a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a>
     </section>
+
     <?php if (!usuarioLogueado()) : ?>
       <section class="login-section" id="login">
         <form class="form" action="#" method="POST">
           <h1 class="form__title">Login</h1>
           <div class="form__group">
             <label class="form__group__text-label" for="email">Email:</label>
-            <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico" required>
+            <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico">
           </div>
           <?php if (!empty($errores["email"])) { ?>
             <div class="alert alert-danger" role="alert">
