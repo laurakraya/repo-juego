@@ -54,7 +54,9 @@ if ($_POST && isset($_POST["login"])) {
 
 <body>
   <nav class="navibar">
-    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
+    <a class="navibar__home-link" href="index.php"><!-- <i class="fas fa-home fa-2x"></i> -->
+      <img src="img/logo-reloj.png" alt="logo reloj">
+    </a>
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
@@ -69,7 +71,8 @@ if ($_POST && isset($_POST["login"])) {
   </nav>
   <main class="content" id="home">
     <section class="presentacion">
-      <h1 class="presentacion__title">ContraReloj</h1>
+      <!-- <h1 class="presentacion__title">ContraReloj</h1> -->
+      <img class="presentacion__logo" src="img/logo-blanco.png" alt="Contra Reloj Logo">
       <p class="presentacion__subtitle">Soy un subtítulo</p>
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
     </section>

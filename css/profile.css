@@ -38,14 +38,6 @@
   margin-bottom: 5px;
 }
 
-.profile__info__avatar__change {
-  color: #440a7f;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  font-size: 14px;
-}
-
 .profile__info__avatar__change:hover {
   text-decoration: none;
 }
