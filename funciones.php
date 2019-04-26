@@ -1,6 +1,6 @@
 <?php
 
-//session_start();
+session_start();
 
 function validarRegistro($datos) {
 
@@ -103,43 +103,4 @@ function existeUsuario($email)
   return buscarEmail($email) !== null;
 }
 
-//VALIDAR LOGIN
-/* function validarLogin($datos) {
-
-$errores = [];
-$datosTrim = [];
-
-foreach ($datos as $posicion => $valor){
-  $datosTrim[$posicion] = trim($valor);
-}
-
-//EMAIL
-if (strlen($datosTrim["email"]) == 0){
-$errores["email"] = "El email no puede estar vacio";}
- else if (filter_var($datosTrim["email"], FILTER_VALIDATE_EMAIL) == false){
-  $errores["email"] = "El formato del email no es valido";}
-  else if (existeUsuario($datosTrim["email"])){
-  $errores["email"] = "El email ya esta registrado";}
-//Password
-if (strlen($datos["pwd"]) == 0){
-  $errores["pwd"] = "La contraseña no puede estar vacia";}
-
-  return $errores;
-}
-
-
-function loguearUsuario($email){
-  $_SESSION["email"] = $email;
-}
-
-function traerUsuarioLogueado(){
-  if(isset($_SESSION["email"])){
-  return buscarEmail($_SESSION["email"]);
-  }
-  return false;
-}
-
-function usuarioLogueado(){
-  return isset($_SESSION["email"]);} */
-
-?>
+/

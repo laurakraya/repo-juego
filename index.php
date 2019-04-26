@@ -18,9 +18,10 @@ if($_POST && isset($_POST["register"])){
 
       $usuario = armarUsuario($_POST);   //crear usuario//
       guardarUsuario($usuario);  //guardar usuario//
-
+      header("Location:bienvenida.php");
+      exit;
     }
-    header("Location:bienvenida.php");
+
   }
 }
 
@@ -29,15 +30,15 @@ if($_POST && isset($_POST["register"])){
    //  exit;
 
     if($_POST && isset($_POST["login"])){
-    $erroresLogin = validarLogin($_POST);
+    $errores = validarLogin($_POST);
 
 
       //Si no hay errores
-      if(empty($erroresLogin)){
+      if(empty($errores)){
 
         loguearUsuario($_POST["email"]);
         //redirigimos a home
-        header("Location:index.php");
+        header("Location:bienvenida.php");
         exit;
       }
 
@@ -65,8 +66,12 @@ if($_POST && isset($_POST["register"])){
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
+      <?php if (usuarioLogueado()): ?>
+          <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
+      <?php else: ?>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
+      <?php endif; ?>
     </ul>
   </nav>
   <main class="content" id="home">
@@ -102,7 +107,7 @@ if($_POST && isset($_POST["register"])){
       <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listo!</span></a>
       <a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a>
     </section>
-
+    <?php if (!usuarioLogueado()): ?>
     <section class="login-section" id="login">
       <form class="form" action="#" method="POST">
         <h1 class="form__title">Login</h1>
@@ -110,9 +115,9 @@ if($_POST && isset($_POST["register"])){
           <label class="form__group__text-label" for="email">Email:</label>
           <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico" required>
         </div>
-        <?php if (!empty($erroresLogin["name"])) { ?>
+        <?php if (!empty($errores["name"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresLogin["name"]; ?>
+            <?php echo $errores["name"]; ?>
           </div>
         <?php } ?>
 
@@ -120,9 +125,9 @@ if($_POST && isset($_POST["register"])){
           <label class="form__group__text-label" for="pass">Contraseña:</label>
           <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
         </div>
-        <?php if (!empty($erroresLogin["pwd"])) { ?>
+        <?php if (!empty($errores["pwd"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresLogin["pwd"]; ?>
+            <?php echo $errores["pwd"]; ?>
           </div>
       <?php } ?>
 
@@ -142,8 +147,9 @@ if($_POST && isset($_POST["register"])){
         <input type="hidden" name="login" value="">
       </form>
     </section>
+    <?php endif; ?>
 
-
+      <?php if (!usuarioLogueado()): ?>
     <section class="register-section" id="register">
       <form class="form" action="index.php#register" method="post">
         <h1 class="form__title">Registrate</h1>
@@ -151,9 +157,9 @@ if($_POST && isset($_POST["register"])){
           <label class="form__group__text-label" for="name">Nombre</label>
           <input id="name" class="form__group__text-field" name="name" type="text" value=""<?php if (isset($nameOk)) {echo $nameOk;}?> placeholder="Ingresá tu nombre">
         </div>
-        <?php if (!empty($erroresRegistro["name"])) { ?>
+        <?php if (!empty($errores["name"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresRegistro["name"]; ?>
+            <?php echo $errores["name"]; ?>
           </div>
         <?php } ?>
         <div class="form__group">
@@ -161,9 +167,9 @@ if($_POST && isset($_POST["register"])){
           <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="
           <?php if (isset($lastNameOk)) {echo $lastNameOk;} ?>" placeholder="Ingresá tu apellido">
         </div>
-        <?php if (!empty($erroresRegistro["lastName"])) { ?>
+        <?php if (!empty($errores["lastName"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresRegistro["lastName"]; ?>
+            <?php echo $errores["lastName"]; ?>
           </div>
         <?php } ?>
         <div class="form__group">
@@ -171,9 +177,9 @@ if($_POST && isset($_POST["register"])){
           <input id="email" class="form__group__text-field" name="email" type="email" value="
           <?php if (isset($emailOk)) {echo $emailOk;} ?>" placeholder="Ingresá tu email">
         </div>
-        <?php if (!empty($erroresRegistro["email"])) { ?>
+        <?php if (!empty($errores["email"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresRegistro["email"]; ?>
+            <?php echo $errores["email"]; ?>
           </div>
         <?php } ?>
         <div class="form__group">
@@ -186,18 +192,18 @@ if($_POST && isset($_POST["register"])){
           <label class="form__group__text-label" for="retypepwd">Repite Contraseña</label>
           <input id="retypepwd" class="form__group__text-field" name="retypepwd" type="password" placeholder="Password">
         </div>
-        <?php if (!empty($erroresRegistro["pwd"])) { ?>
+        <?php if (!empty($errores["pwd"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresRegistro["pwd"]; ?>
+            <?php echo $errores["pwd"]; ?>
           </div>
         <?php } ?>
         <div class="form__group form-check">
           <input id="accepted" name="accepted" class="form-check__input" type="checkbox" value="yes">
           <label class="form-check__label" for="accept">Acepto los términos y condiciones</label>
         </div>
-        <?php if (!empty($erroresRegistro["accepted"])) { ?>
+        <?php if (!empty($errores["accepted"])) { ?>
           <div class="alert alert-danger" role="alert">
-            <?php echo $erroresRegistro["accepted"]; ?>
+            <?php echo $errores["accepted"]; ?>
           </div>
           <?php } ?>
         <button class="form__btn" type="submit" name="register">Registrarme</button>
@@ -205,6 +211,7 @@ if($_POST && isset($_POST["register"])){
         <input type="hidden" name="register" value="">
       </form>
     </section>
+  <?php endif; ?>
   </main>
 </body>
 
