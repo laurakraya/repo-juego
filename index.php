@@ -1,6 +1,7 @@
 <?php
   require_once "funciones.php";
 
+
   if(usuarioLogueado()){
     header("Location:dashboard.php");
     exit;
@@ -22,9 +23,6 @@
   }
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">

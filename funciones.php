@@ -1,6 +1,6 @@
 <?php
 
-//session_start();
+session_start();
 
 function validarRegistro($datos) {
 
@@ -133,7 +133,7 @@ function validarLogin($datos){
 
   function traerUsuarioLogueado(){
     if(isset($_SESSION["email"])){
-    return buscarPorEmail($_SESSION["email"]);
+    return buscarEmail($_SESSION["email"]);
     }
     return false;
   }
