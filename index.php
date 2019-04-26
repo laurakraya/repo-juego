@@ -3,7 +3,7 @@
 require_once("funciones.php");
 
 
-if($_POST){
+if($_POST && isset($_POST["register"])){
 
   $errores = validarRegistro($_POST);
   $nameOk = $_POST["name"];
@@ -22,12 +22,12 @@ if($_POST){
   if(usuarioLogueado()){
     header("Location:bienvenida.php");
     exit;
-  }
+ }
     $errores = [];
 
-    if($_POST){
+    if($_POST && isset($_POST["login"])){
       //Validar Login
-      $errores = validarLogin($_POST);
+      $errores= validarLogin($_POST);
 
       //Si no hay errores
       if(empty($errores)){
@@ -125,7 +125,7 @@ if($_POST){
           <div class="alert alert-danger" role="alert">
       <?php echo $errores["pwd"]; ?>
           </div>
-      <?php } ?>       
+      <?php } ?>
 
         <div class="form__group form-check">
           <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
@@ -134,8 +134,9 @@ if($_POST){
               contraseña?</a></span>
         </div>
         <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p>
-        <button type="submit" class="form__btn submit" name="button" value="ingresar">Login</button>
+        <button  type="submit" class="form__btn submit" name="login" value="ingresar">Login</button>
         <p class="form__not-registered">¿No tenés cuenta?<a class="form__not-registered__link" href="#register">Registrate</a></p>
+        <input type="hidden" name="login" value="">
       </form>
     </section>
 
@@ -194,8 +195,9 @@ if($_POST){
             <?php echo $errores["accepted"]; ?>
           </div>
           <?php } ?>
-        <button class="form__btn" type="submit" name="">Registrarme</button>
+        <button class="form__btn" type="submit" name="register">Registrarme</button>
         <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
+        <input type="hidden" name="register" value="">
       </form>
     </section>
   </main>
