@@ -2,8 +2,8 @@
 
 //session_start();
 
-function validarRegistro($datos) { 
-  
+function validarRegistro($datos) {
+
   //Juntar errores del form//
 
   $errores = [];

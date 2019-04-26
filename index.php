@@ -4,46 +4,35 @@ require_once("funciones.php");
 
 if ($_POST) {
 
-<<<<<<< HEAD
-if($_POST && isset($_POST["register"])){
 
+if($_POST && isset($_POST["register"])){
   $errores = validarRegistro($_POST);
-=======
-  $erroresRegistro = validarRegistro($_POST);
->>>>>>> 43777bd562f3839e19f97964e0266f66a8c0c88e
+
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
 
 
-  if (empty($erroresRegistro)) {
-    if (!existeUsuario($_POST["email"])) { 
+  if (empty($errores)) {
+    if (!existeUsuario($_POST["email"])) {
 
       $usuario = armarUsuario($_POST);   //crear usuario//
       guardarUsuario($usuario);  //guardar usuario//
-      
-    }          
+
+    }
     header("Location: bienvenida.php");
   }
 }
 
-/*   if(usuarioLogueado()){
-    header("Location:bienvenida.php");
-    exit;
-<<<<<<< HEAD
+   // if(usuarioLogueado()){
+   //  header("Location:bienvenida.php");
+   //  exit;
+
  }
-    $errores = [];
-=======
-  }
->>>>>>> 43777bd562f3839e19f97964e0266f66a8c0c88e
 
     if($_POST && isset($_POST["login"])){
-      //Validar Login
-<<<<<<< HEAD
-      $errores= validarLogin($_POST);
-=======
-      $erroresLogin = validarLogin($_POST);
->>>>>>> 43777bd562f3839e19f97964e0266f66a8c0c88e
+          $erroresLogin = validarLogin($_POST);
+
 
       //Si no hay errores
       if(empty($erroresLogin)){
@@ -54,7 +43,7 @@ if($_POST && isset($_POST["register"])){
         exit;
       }
 
-  } */
+  }
 
 ?>
 
@@ -137,11 +126,9 @@ if($_POST && isset($_POST["register"])){
           <div class="alert alert-danger" role="alert">
             <?php echo $erroresLogin["pwd"]; ?>
           </div>
-<<<<<<< HEAD
       <?php } ?>
-=======
-        <?php } ?>
->>>>>>> 43777bd562f3839e19f97964e0266f66a8c0c88e
+
+
 
         <div class="form__group form-check">
           <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
@@ -150,11 +137,11 @@ if($_POST && isset($_POST["register"])){
               contraseña?</a></span>
         </div>
         <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p>
-<<<<<<< HEAD
+
         <button  type="submit" class="form__btn submit" name="login" value="ingresar">Login</button>
-=======
+
         <button type="submit" class="form__btn submit" name="submit_login" value="ingresar">Login</button>
->>>>>>> 43777bd562f3839e19f97964e0266f66a8c0c88e
+
         <p class="form__not-registered">¿No tenés cuenta?<a class="form__not-registered__link" href="#register">Registrate</a></p>
         <input type="hidden" name="login" value="">
       </form>
@@ -166,9 +153,7 @@ if($_POST && isset($_POST["register"])){
         <h1 class="form__title">Registrate</h1>
         <div class="form__group">
           <label class="form__group__text-label" for="name">Nombre</label>
-          <input id="name" class="form__group__text-field" name="name" type="text" value="<?php if (isset($nameOk)) {
-                                                                                            echo $nameOk;
-                                                                                          } ?>" placeholder="Ingresá tu nombre">
+          <input id="name" class="form__group__text-field" name="name" type="text" value=""<?php if (isset($nameOk)) {echo $nameOk;}?>" placeholder="Ingresá tu nombre">
         </div>
         <?php if (!empty($erroresRegistro["name"])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -177,9 +162,8 @@ if($_POST && isset($_POST["register"])){
         <?php } ?>
         <div class="form__group">
           <label class="form__group__text-label" for="lastName">Apellido</label>
-          <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="<?php if (isset($lastNameOk)) {
-                                                                                                    echo $lastNameOk;
-                                                                                                  } ?>" placeholder="Ingresá tu apellido">
+          <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="
+          <?php if (isset($lastNameOk)) {echo $lastNameOk;} ?>" placeholder="Ingresá tu apellido">
         </div>
         <?php if (!empty($erroresRegistro["lastName"])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -188,9 +172,8 @@ if($_POST && isset($_POST["register"])){
         <?php } ?>
         <div class="form__group">
           <label class="form__group__text-label" for="email">Email</label>
-          <input id="email" class="form__group__text-field" name="email" type="email" value="<?php if (isset($emailOk)) {
-                                                                                                echo $emailOk;
-                                                                                              } ?>" placeholder="Ingresá tu email">
+          <input id="email" class="form__group__text-field" name="email" type="email" value="
+          <?php if (isset($emailOk)) {echo $emailOk;} ?>" placeholder="Ingresá tu email">
         </div>
         <?php if (!empty($erroresRegistro["email"])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -220,11 +203,7 @@ if($_POST && isset($_POST["register"])){
           <div class="alert alert-danger" role="alert">
             <?php echo $erroresRegistro["accepted"]; ?>
           </div>
-<<<<<<< HEAD
           <?php } ?>
-=======
-        <?php } ?>
->>>>>>> 43777bd562f3839e19f97964e0266f66a8c0c88e
         <button class="form__btn" type="submit" name="register">Registrarme</button>
         <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
         <input type="hidden" name="register" value="">
