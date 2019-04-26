@@ -36,7 +36,6 @@ if ($_POST && isset($_POST["login"])) {
     exit;
   }
 }
-
 ?>
 
 
@@ -60,6 +59,7 @@ if ($_POST && isset($_POST["login"])) {
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
       <?php if (usuarioLogueado()) : ?>
+        <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php">Mi Perfil</a></li>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
       <?php else : ?>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>

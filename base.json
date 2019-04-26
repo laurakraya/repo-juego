@@ -20,6 +20,13 @@
             "lastname": "kraya",
             "email": "fer@kraya.com",
             "password": "$2y$10$pG3MBrISKBHvG6XGGPourOXMafYD2ALhrpa2.pmAfXpl5LWR3BBSK"
+        },
+        {
+            "id": 3,
+            "name": "javi",
+            "lastname": "kraya",
+            "email": "javi@kraya.com",
+            "password": "$2y$10$B2vyOaz\/kY4qvDtw5rmjGuOb4Nlnc89zd4119Fb3BmXxR9Xc0IqPO"
         }
     ]
 }

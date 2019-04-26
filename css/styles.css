@@ -126,7 +126,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 50px 0px;
+  padding: 60px 0px;
 }
 
 .presentacion {
@@ -288,6 +288,8 @@ flex-wrap: wrap;
 }
 
 
+
+
 @media (min-width: 540px) {
   body {
     font-size: 16px;
@@ -303,4 +305,4 @@ flex-wrap: wrap;
   }
 }
 
-/*# sourceMappingURL=home.css.map */
+
