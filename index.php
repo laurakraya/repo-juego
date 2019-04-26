@@ -123,16 +123,13 @@ if ($_POST && isset($_POST["login"])) {
               <?php echo $errores["pwd"]; ?>
             </div>
           <?php } ?>
-
-
-
-          <div class="form__group form-check">
+<!--           <div class="form__group form-check">
             <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
             <label class="form-check__label" for="recordar">Recordame</label>
             <span class="form-check__fp"><a class="form-check__fp__link" href="forgetpassword.html">¿Olvido su
                 contraseña?</a></span>
-          </div>
-          <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p>
+          </div> -->
+          <!-- <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p> -->
 
           <button type="submit" class="form__btn submit" name="login" value="ingresar">Login</button>
 
@@ -185,8 +182,6 @@ if ($_POST && isset($_POST["login"])) {
             <label class="form__group__text-label" for="pwd">Contraseña</label>
             <input id="pwd" class="form__group__text-field" name="pwd" type="password" placeholder="Password">
           </div>
-
-
           <div class="form__group">
             <label class="form__group__text-label" for="retypepwd">Repite Contraseña</label>
             <input id="retypepwd" class="form__group__text-field" name="retypepwd" type="password" placeholder="Password">
@@ -206,7 +201,7 @@ if ($_POST && isset($_POST["login"])) {
             </div>
           <?php } ?>
           <button class="form__btn" type="submit" name="register">Registrarme</button>
-          <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
+          <!-- <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button> -->
           <input type="hidden" name="register" value="">
         </form>
       </section>
