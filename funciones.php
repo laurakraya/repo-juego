@@ -150,4 +150,18 @@ function usuarioLogueado()
   return isset($_SESSION["email"]);
 }
 
+function validarImagen($datos){
+    $errores = [];
+
+   if ($datos){
+  if($datos["avatar"]["name"] == ""){
+    $errores["avatar"] = "No se seleccionó archivo.";
+  } elseif($datos["avatar"]["error"]!==0){
+    $errores["avatar"] = "Hubo un error en la subida del archivo";
+//   } else{
+//     $ext = pathinfo($datos["avatar"]["name"], PATHINFO_EXTENSION);
+//     if($ext !== "png"){
+//       $errores["avatar"]= "El archivo debe ser de tipo jpg, jpeg o png";
+   }}
+return $errores;}
 ?>

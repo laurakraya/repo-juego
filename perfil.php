@@ -5,9 +5,11 @@ require_once("funciones.php");
 if (!usuarioLogueado()) {
   header("Location:index.php");
 }
+$usuario = traerUsuarioLogueado();
+
+ $erroresAvatar = validarImagen($_FILES);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,6 +31,7 @@ if (!usuarioLogueado()) {
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
       <?php if (usuarioLogueado()) : ?>
+        <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
       <?php else : ?>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
@@ -37,7 +40,7 @@ if (!usuarioLogueado()) {
     </ul>
   </nav>
   <section class="profile">
-    <h1 class="profile__title">Nombre de Usuario</h1>
+    <h1 class="profile__title"><?php echo "$usuario[name]" . " " . "$usuario[lastname]";  ?></h1>
     <div class="profile__info">
       <div class="profile__info__avatar">
         <div class="profile__info__avatar__pic" style="background-image: url('img/profile-placeholder.png')"></div>
@@ -46,26 +49,30 @@ if (!usuarioLogueado()) {
         <ul class="profile-data__list">
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Nombre:</span>
-            <span class="profile-data__list__item__data">Laura</span>
+            <span class="profile-data__list__item__data"><?php echo "$usuario[name]"; ?></span>
           </li>
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Apellido:</span>
-            <span class="profile-data__list__item__data">Kraya</span>
+            <span class="profile-data__list__item__data"><?php echo "$usuario[lastname]"; ?></span>
           </li>
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Mail:</span>
-            <span class="profile-data__list__item__data">laura@kraya.com</span>
+            <span class="profile-data__list__item__data"><?php echo "$usuario[email]"; ?></span>
           </li>
         </ul>
       </div>
     </div>
     <div class="change-avatar">
-        <form class="change-avatar__form" action="">
+        <form class="change-avatar__form" action="" method="POST" enctype="multipart/form-data">
           <label class="change-avatar__form__label" for="avatar">Cambiar avatar:</label>
           <div>
             <input class="change-avatar__form__input" type="file" id="avatar" class="form-control" name="avatar">
-            <button class="change-avatar__form__btn" type="submit">Subir</button>
-          </div>
+            <button class="change-avatar__form__btn" name="submit" type="submit">Subir</button>
+            </div>
+            <?php if (!empty($erroresAvatar)) { ?>
+              <div class="alert alert-danger" role="alert">
+                <?php echo $erroresAvatar["avatar"]; ?>
+              </div>      <?php } ?>
         </form>
     </div>
   </section>

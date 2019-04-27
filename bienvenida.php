@@ -2,6 +2,8 @@
 
 require_once("funciones.php");
 
+
+header("refresh:2; url = index.php#login" );
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ require_once("funciones.php");
   <section>
 
     <div class="alert alert-success" role="alert">
-      <h4 class="alert-heading">Gracias por registrarte!</h4>
+      <h2 class="alert-heading">Gracias por registrarte!</h2>
     </div>
 
   </section>

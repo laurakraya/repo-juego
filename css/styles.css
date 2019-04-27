@@ -236,6 +236,11 @@ section {
   margin-bottom: 10px;
 }
 
+.contrareloj {
+ width: 95%;
+ margin: 0 auto;
+
+}
 .form-check {
   display: flex;
   align-items: center;
@@ -325,5 +330,3 @@ flex-wrap: wrap;
     height: auto;
   }
 }
-
-

@@ -24,11 +24,11 @@ if ($_POST && isset($_POST["register"])) {
 
 
 if ($_POST && isset($_POST["login"])) {
-  $errores = validarLogin($_POST);
+  $erroresLogin = validarLogin($_POST);
 
 
   //Si no hay errores
-  if (empty($errores)) {
+  if (empty($erroresLogin)) {
 
     loguearUsuario($_POST["email"]);
     //redirigimos a home
@@ -36,6 +36,7 @@ if ($_POST && isset($_POST["login"])) {
     exit;
   }
 }
+$usuario = traerUsuarioLogueado();
 ?>
 
 
@@ -54,14 +55,12 @@ if ($_POST && isset($_POST["login"])) {
 
 <body>
   <nav class="navibar">
-    <a class="navibar__home-link" href="index.php"><!-- <i class="fas fa-home fa-2x"></i> -->
-      <img src="img/logo-reloj.png" alt="logo reloj">
-    </a>
+    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
       <?php if (usuarioLogueado()) : ?>
-        <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php">Mi Perfil</a></li>
+        <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
       <?php else : ?>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
@@ -71,9 +70,8 @@ if ($_POST && isset($_POST["login"])) {
   </nav>
   <main class="content" id="home">
     <section class="presentacion">
-      <!-- <h1 class="presentacion__title">ContraReloj</h1> -->
-      <img class="presentacion__logo" src="img/logo-blanco.png" alt="Contra Reloj Logo">
-      <p class="presentacion__subtitle">Soy un subtítulo</p>
+      <h1 class="presentacion__title">  <img class="contrareloj" src="img/logo-blanco.png" alt="contrareloj"></h1>
+
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
     </section>
 
@@ -100,20 +98,20 @@ if ($_POST && isset($_POST["login"])) {
           pellentesque
           sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
       </div>
-      <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listo!</span></a>
+      <a class="btn descripcion__start-btn" href="#home"><span>¡Estoy listo!</span></a>
       <?php if (!usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
     </section>
     <?php if (!usuarioLogueado()) : ?>
       <section class="login-section" id="login">
-        <form class="form" action="#" method="POST">
+        <form class="form" action="index.php#login" method="POST">
           <h1 class="form__title">Login</h1>
           <div class="form__group">
             <label class="form__group__text-label" for="email">Email:</label>
             <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico" required>
           </div>
-          <?php if (!empty($errores["email"])) { ?>
+          <?php if (!empty($erroresLogin["email"])) { ?>
             <div class="alert alert-danger" role="alert">
-              <?php echo $errores["email"]; ?>
+              <?php echo $erroresLogin["email"]; ?>
             </div>
           <?php } ?>
 
@@ -121,9 +119,9 @@ if ($_POST && isset($_POST["login"])) {
             <label class="form__group__text-label" for="pass">Contraseña:</label>
             <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
           </div>
-          <?php if (!empty($errores["pwd"])) { ?>
+          <?php if (!empty($erroresLogin["pwd"])) { ?>
             <div class="alert alert-danger" role="alert">
-              <?php echo $errores["pwd"]; ?>
+              <?php echo $erroresLogin["pwd"]; ?>
             </div>
           <?php } ?>
 <!--           <div class="form__group form-check">
@@ -148,9 +146,9 @@ if ($_POST && isset($_POST["login"])) {
           <h1 class="form__title">Registrate</h1>
           <div class="form__group">
             <label class="form__group__text-label" for="name">Nombre</label>
-            <input id="name" class="form__group__text-field" name="name" type="text" value="" <?php if (isset($nameOk)) {
-                                                                                                echo $nameOk;
-                                                                                              } ?> placeholder="Ingresá tu nombre">
+            <input id="name" class="form__group__text-field" name="name" type="text" value=""
+            <?php if (isset($nameOk) && empty($errores["name"])) { echo $nameOk;
+                  } ?> placeholder="Ingresá tu nombre">
           </div>
           <?php if (!empty($errores["name"])) { ?>
             <div class="alert alert-danger" role="alert">
@@ -159,10 +157,10 @@ if ($_POST && isset($_POST["login"])) {
           <?php } ?>
           <div class="form__group">
             <label class="form__group__text-label" for="lastName">Apellido</label>
-            <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="
-            <?php if (isset($lastNameOk)) {
+            <input id="lastName" class="form__group__text-field" name="lastName" type="text" value=""
+            <?php if (isset($lastNameOk) && empty($errores["lastName"])) {
               echo $lastNameOk;
-            } ?>" placeholder="Ingresá tu apellido">
+            } ?> placeholder="Ingresá tu apellido">
           </div>
           <?php if (!empty($errores["lastName"])) { ?>
             <div class="alert alert-danger" role="alert">
@@ -172,7 +170,7 @@ if ($_POST && isset($_POST["login"])) {
           <div class="form__group">
             <label class="form__group__text-label" for="email">Email</label>
             <input id="email" class="form__group__text-field" name="email" type="email" value="
-            <?php if (isset($emailOk)) {
+            <?php if (isset($emailOk) && empty($errores["email"])) {
               echo $emailOk;
             } ?>" placeholder="Ingresá tu email">
           </div>
