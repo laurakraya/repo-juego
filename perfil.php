@@ -7,7 +7,7 @@ if (!usuarioLogueado()) {
 }
 $usuario = traerUsuarioLogueado();
 
- $erroresAvatar = validarImagen($_FILES);
+
 
 ?>
 <!DOCTYPE html>
@@ -26,12 +26,16 @@ $usuario = traerUsuarioLogueado();
 
 <body>
   <nav class="navibar">
-    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
+      <?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
+    <a class="navibar__home-link" href="perfil.php"> <img src="img/user-vector-flat-3.png" alt="perfilusuario"> </a>
+    <ul class="navibar__list2">
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
+    </ul><?php endif; ?>
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
       <?php if (usuarioLogueado()) : ?>
-        <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
+
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
       <?php else : ?>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>

@@ -105,6 +105,13 @@ body {
 .navibar__list {
   display: flex;
   flex-direction: row;
+
+}
+.navibar__list2 {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 50%;
 }
 .navibar__list__item {
   margin: 0px 10px;

@@ -89,11 +89,12 @@ function buscarEmail($email)
 {
   $usuarios = file_get_contents("base.json");
   $array = json_decode($usuarios, true);
+  if (isset($array["usuarios"])){
   foreach ($array["usuarios"] as $usuario) {
     if ($email == $usuario["email"]) {
       return $usuario;
     }
-  }
+  }}
   return null;
 }
 
