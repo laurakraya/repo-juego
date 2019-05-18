@@ -102,5 +102,3 @@ function existeUsuario($email)
 
   return buscarEmail($email) !== null;
 }
-
-/
