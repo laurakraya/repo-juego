@@ -2,9 +2,13 @@
 
 require_once("funciones.php");
 
+//var_dump($_SESSION);
+
+
 if ($_POST && isset($_POST["register"])) {
 
   $errores = validarRegistro($_POST);
+  var_dump($_POST, $errores);
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
@@ -15,6 +19,7 @@ if ($_POST && isset($_POST["register"])) {
 
       $usuario = armarUsuario($_POST);   //crear usuario//
       guardarUsuario($usuario);  //guardar usuario//
+
       header("Location:bienvenida.php");
       exit;
     }
@@ -24,23 +29,19 @@ if ($_POST && isset($_POST["register"])) {
 
 
 if ($_POST && isset($_POST["login"])) {
-  $erroresLogin = validarLogin($_POST);
+  $errores = validarLogin($_POST);
 
 
   //Si no hay errores
-  if (empty($erroresLogin)) {
+  if (empty($errores)) {
 
     loguearUsuario($_POST["email"]);
     //redirigimos a home
-    header("Location:index.php#descripcion");
+    header("Location:bienvenida.php");
     exit;
   }
-
-
-
 }
-if (usuarioLogueado()) {
-$usuario = traerUsuarioLogueado();}
+
 ?>
 
 
@@ -59,27 +60,23 @@ $usuario = traerUsuarioLogueado();}
 
 <body>
   <nav class="navibar">
-      <?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
-    <a class="navibar__home-link" href="perfil.php"> <img src="img/user-vector-flat-3.png" alt="perfilusuario"> </a>
-    <ul class="navibar__list2">
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
-    </ul><?php endif; ?>
+    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
       <?php if (usuarioLogueado()) : ?>
-
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
       <?php else : ?>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="#register">Registro</a></li>
       <?php endif; ?>
+
     </ul>
   </nav>
   <main class="content" id="home">
     <section class="presentacion">
-      <h1 class="presentacion__title">  <img class="contrareloj" src="img/logo-blanco.png" alt="contrareloj"></h1>
-
+      <h1 class="presentacion__title">ContraReloj</h1>
+      <p class="presentacion__subtitle">Soy un subtítulo</p>
       <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
     </section>
 
@@ -106,20 +103,21 @@ $usuario = traerUsuarioLogueado();}
           pellentesque
           sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
       </div>
-      <a class="btn descripcion__start-btn" href="#home"><span>¡Estoy listo!</span></a>
-      <?php if (!usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
+      <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listo!</span></a>
+      <a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a>
     </section>
+
     <?php if (!usuarioLogueado()) : ?>
       <section class="login-section" id="login">
-        <form class="form" action="index.php#login" method="POST">
+        <form class="form" action="#" method="POST">
           <h1 class="form__title">Login</h1>
           <div class="form__group">
             <label class="form__group__text-label" for="email">Email:</label>
-            <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico" required>
+            <input class="form__group__text-field" type="email" name="email" id="email" placeholder="Ingrese su correo electronico">
           </div>
-          <?php if (!empty($erroresLogin["email"])) { ?>
+          <?php if (!empty($errores["email"])) { ?>
             <div class="alert alert-danger" role="alert">
-              <?php echo $erroresLogin["email"]; ?>
+              <?php echo $errores["email"]; ?>
             </div>
           <?php } ?>
 
@@ -127,18 +125,21 @@ $usuario = traerUsuarioLogueado();}
             <label class="form__group__text-label" for="pass">Contraseña:</label>
             <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
           </div>
-          <?php if (!empty($erroresLogin["pwd"])) { ?>
+          <?php if (!empty($errores["pwd"])) { ?>
             <div class="alert alert-danger" role="alert">
-              <?php echo $erroresLogin["pwd"]; ?>
+              <?php echo $errores["pwd"]; ?>
             </div>
           <?php } ?>
-<!--           <div class="form__group form-check">
+
+
+
+          <div class="form__group form-check">
             <input type="checkbox" class="form-check__input" name="recordar" id="recordar" value="yes">
             <label class="form-check__label" for="recordar">Recordame</label>
             <span class="form-check__fp"><a class="form-check__fp__link" href="forgetpassword.html">¿Olvido su
                 contraseña?</a></span>
-          </div> -->
-          <!-- <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p> -->
+          </div>
+          <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p>
 
           <button type="submit" class="form__btn submit" name="login" value="ingresar">Login</button>
 
@@ -154,9 +155,9 @@ $usuario = traerUsuarioLogueado();}
           <h1 class="form__title">Registrate</h1>
           <div class="form__group">
             <label class="form__group__text-label" for="name">Nombre</label>
-            <input id="name" class="form__group__text-field" name="name" type="text" value=""
-            <?php if (isset($nameOk) && empty($errores["name"])) { echo $nameOk;
-                  } ?> placeholder="Ingresá tu nombre">
+            <input id="name" class="form__group__text-field" name="name" type="text" value="" <?php if (isset($nameOk)) {
+                                                                                                echo $nameOk;
+                                                                                              } ?> placeholder="Ingresá tu nombre">
           </div>
           <?php if (!empty($errores["name"])) { ?>
             <div class="alert alert-danger" role="alert">
@@ -165,10 +166,10 @@ $usuario = traerUsuarioLogueado();}
           <?php } ?>
           <div class="form__group">
             <label class="form__group__text-label" for="lastName">Apellido</label>
-            <input id="lastName" class="form__group__text-field" name="lastName" type="text" value=""
-            <?php if (isset($lastNameOk) && empty($errores["lastName"])) {
+            <input id="lastName" class="form__group__text-field" name="lastName" type="text" value="
+            <?php if (isset($lastNameOk)) {
               echo $lastNameOk;
-            } ?> placeholder="Ingresá tu apellido">
+            } ?>" placeholder="Ingresá tu apellido">
           </div>
           <?php if (!empty($errores["lastName"])) { ?>
             <div class="alert alert-danger" role="alert">
@@ -178,7 +179,7 @@ $usuario = traerUsuarioLogueado();}
           <div class="form__group">
             <label class="form__group__text-label" for="email">Email</label>
             <input id="email" class="form__group__text-field" name="email" type="email" value="
-            <?php if (isset($emailOk) && empty($errores["email"])) {
+            <?php if (isset($emailOk)) {
               echo $emailOk;
             } ?>" placeholder="Ingresá tu email">
           </div>
@@ -191,6 +192,8 @@ $usuario = traerUsuarioLogueado();}
             <label class="form__group__text-label" for="pwd">Contraseña</label>
             <input id="pwd" class="form__group__text-field" name="pwd" type="password" placeholder="Password">
           </div>
+
+
           <div class="form__group">
             <label class="form__group__text-label" for="retypepwd">Repite Contraseña</label>
             <input id="retypepwd" class="form__group__text-field" name="retypepwd" type="password" placeholder="Password">
@@ -210,7 +213,7 @@ $usuario = traerUsuarioLogueado();}
             </div>
           <?php } ?>
           <button class="form__btn" type="submit" name="register">Registrarme</button>
-          <!-- <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button> -->
+          <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button>
           <input type="hidden" name="register" value="">
         </form>
       </section>

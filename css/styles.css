@@ -88,6 +88,12 @@ body {
   padding: 20px;
   background-color: black;
   z-index: 5;
+  min-height: 60px;
+}
+
+.navibar img {
+  height: 40px;
+  width: 40px;
 }
 .navibar__home-link {
   margin-right: auto;
@@ -99,6 +105,13 @@ body {
 .navibar__list {
   display: flex;
   flex-direction: row;
+
+}
+.navibar__list2 {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 50%;
 }
 .navibar__list__item {
   margin: 0px 10px;
@@ -126,7 +139,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 50px 0px;
+  padding: 60px 0px;
 }
 
 .presentacion {
@@ -154,6 +167,11 @@ section {
 .presentacion__subtitle {
   font-size: 2em;
   margin-bottom: 30px;
+}
+
+.presentacion__logo {
+  width: 80vw;
+  height: auto;
 }
 
 .descripcion {
@@ -225,14 +243,25 @@ section {
   margin-bottom: 10px;
 }
 
+.contrareloj {
+ width: 95%;
+ margin: 0 auto;
+
+}
 .form-check {
   display: flex;
   align-items: center;
   height: 30px;
   padding: 5px 0px;
 }
+.form-check input {
+  height: 18px;
+  width: 18px;
+  margin-right: 5px;
+}
 .form-check__label {
   height: 20px;
+  line-height: 20px;
 }
 .form-check__fp {
   height: 20px;
@@ -288,6 +317,8 @@ flex-wrap: wrap;
 }
 
 
+
+
 @media (min-width: 540px) {
   body {
     font-size: 16px;
@@ -301,6 +332,8 @@ flex-wrap: wrap;
   .descripcion__start-btn {
     width: 30%;
   }
+  .presentacion__logo {
+    width: 50vw;
+    height: auto;
+  }
 }
-
-/*# sourceMappingURL=home.css.map */
