@@ -82,13 +82,12 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 10vh;
+  height: 60px;
   width: 100%;
   position: fixed;
   padding: 20px;
   background-color: black;
   z-index: 5;
-  min-height: 60px;
 }
 
 .navibar img {
@@ -131,6 +130,8 @@ body {
   align-items: center;
   max-width: 90%;
   margin: 0 auto;
+  padding-top: 60px;
+  min-height: 100vh;
 }
 
 section {
@@ -245,6 +246,7 @@ section {
 
 .contrareloj {
  width: 95%;
+ display: block;
  margin: 0 auto;
 
 }
@@ -304,18 +306,78 @@ section {
 }
 /**CSS DE LAS PREGUNTAS**/
 
-.preguntas{
-background-color: #9BC434;
-width: 60%;
-height: 60%;
-flex-wrap: wrap;
-}
-.preguntas__pregunta{
-  background-color: black;
+.area-juego {
+  margin: 10px;
+  border: 1px solid white;
+  width: 100%;
+  max-width: 800px;
   display: flex;
-
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
+.area-juego__display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 60px;
+}
+
+.area-juego__display__img {
+  border: 1px solid white;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.area-juego__display__img span {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.area-juego__opciones {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.area-juego__btn {
+  margin-bottom: 20px;
+  height: 30px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.area-juego__btn:hover {
+  color: #440A7F;
+  border: 1px solid #440A7F;
+}
+
+.area-juego__btn:last-child {
+  margin-bottom: 0px;
+}
+
+.counter {
+  display: none;
+}
 
 
 
@@ -335,5 +397,21 @@ flex-wrap: wrap;
   .presentacion__logo {
     width: 50vw;
     height: auto;
+  }
+  .area-juego__display__img {
+    width: 250px;
+    height: 250px;
+  }
+  .area-juego__display__img span {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .area-juego__btn {
+    height: 40px;
+    width: 40%;
   }
 }

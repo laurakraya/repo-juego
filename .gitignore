@@ -1,3 +1,6 @@
 # ignore a file type
 *.sql
+
+#ignore specific files on root directory
 base.json
+basejuego.sql

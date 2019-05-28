@@ -1,0 +1,11 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "name": "lau",
+            "lastname": "kraya",
+            "email": "lau@kraya.com",
+            "password": "$2y$10$5M1uSzyY6h22IN4nI93vfuaBdjWnOTK1uVj82lrwls4\/fGyfSRApe"
+        }
+    ]
+}

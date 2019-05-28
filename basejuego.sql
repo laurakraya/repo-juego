@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2019 a las 23:44:39
+-- Tiempo de generación: 28-05-2019 a las 17:03:47
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -43,8 +43,25 @@ CREATE TABLE `preguntas` (
   `id` int(11) NOT NULL,
   `imagen` text,
   `fecha_Nac` date DEFAULT NULL,
-  `niveles_id` int(11) DEFAULT NULL
+  `niveles_id` int(11) DEFAULT NULL,
+  `nombre` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `preguntas`
+--
+
+INSERT INTO `preguntas` (`id`, `imagen`, `fecha_Nac`, `niveles_id`, `nombre`) VALUES
+(1, 'Imagenes/1.1.jpg', '1985-02-05', NULL, 'Cristiano Ronaldo dos San'),
+(2, 'Imagenes/1.2.jpg', '1973-12-09', NULL, 'Paul Walker'),
+(3, 'Imagenes/1.3.jpg', '1993-11-23', NULL, 'Miley Cyrus'),
+(4, 'Imagenes/1.4.jpg', '1961-05-06', NULL, 'Gorge Clooney'),
+(5, 'Imagenes/1.5.jpg', '1994-03-01', NULL, 'Justin Bieber'),
+(6, 'Imagenes/1.6.jpg', '1963-12-18', NULL, 'Brat Pitt'),
+(7, 'Imagenes/1.7.jpg', '1989-07-23', NULL, 'Daniel Jacob Racliffe'),
+(8, 'Imagenes/1.8.jpg', '1956-07-09', NULL, 'Tom Hanks'),
+(9, 'Imagenes/1.9.jpg', '1946-12-18', NULL, 'Steven Spielberg'),
+(10, 'Imagenes/1.10.jpg', '1970-10-08', NULL, 'Matt Damon');
 
 -- --------------------------------------------------------
 
