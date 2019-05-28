@@ -1,11 +1,26 @@
 <?php
 
 include_once "funciones.php";
+include_once "clases/database.php";
+include_once "clases/pregunta.php";
+
+$db = new Db;
+
+//MIRÁ MIRÁ MIRÁ como no repetimos imágenes
+
+$pregunta1 = $db->buscarPregunta();
+
+$pregunta2 = $db->buscarPregunta();
+
+while($pregunta1->getId() == $pregunta2->getId()) {
+  $pregunta2 = $db->buscarPregunta();
+}
 
 if (usuarioLogueado()) {
   $usuario = traerUsuarioLogueado();
 }
   
+
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +48,10 @@ crossorigin="anonymous">
   <main class="content">
     <div class="area-juego">
       <div class="area-juego__display">
-        <div class="area-juego__display__img" style="background-image: url('Imagenes/1.<?php echo rand(1, 20) ?>.jpg')">
+        <div class="area-juego__display__img" style="background-image: url('<?= $pregunta1->getImagen() ?>')">
           <span>A</span>
         </div>
-        <div class="area-juego__display__img" style="background-image: url('Imagenes/1.<?php echo rand(1, 20) ?>.jpg')">
+        <div class="area-juego__display__img" style="background-image: url('<?= $pregunta2->getImagen() ?>')">
           <span>B</span>
         </div>
       </div>
