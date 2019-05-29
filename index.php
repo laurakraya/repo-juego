@@ -1,52 +1,56 @@
 <?php
 
 require_once("funciones.php");
+require_once("clases/validator.php");
+require_once("clases/DbMySql.php");
 
+$dbMysql = new DbMySql;
+                                      // REGISTRO //
 if ($_POST && isset($_POST["register"])) {
-  
-  $errores = validarRegistro($_POST);
+
+  $errores = Validator::validarRegistro($_POST);
   $nameOk = $_POST["name"];
   $lastNameOk = $_POST["lastName"];
   $emailOk = $_POST["email"];
-  
-  
+
+
   if (empty($errores)) {
     if (!existeUsuario($_POST["email"])) {
-      
-      $usuario = armarUsuario($_POST);   //crear usuario//
-      guardarUsuario($usuario);  //guardar usuario//
+
+      $usuario = new Usuario($_POST);      //armarUsuario($_POST);   //crear usuario//
+      $dbMysql->guardarUsuario($usuario);  //guardar usuario//
       header("Location:bienvenida.php");
       exit;
     }
   }
 }
-
+                                         // LOGIN //
 
 
 if ($_POST && isset($_POST["login"])) {
-  $erroresLogin = validarLogin($_POST);
-  
-  
+  $erroresLogin = Validator::validarLogin($_POST);
+
+
   //Si no hay errores
   if (empty($erroresLogin)) {
-    
+
     loguearUsuario($_POST["email"]);
     //redirigimos a home
     header("Location:index.php#descripcion");
     exit;
   }
-  
-  
-  
+
+
+
 }
 if (usuarioLogueado()) {
   $usuario = traerUsuarioLogueado();}
   ?>
-  
-  
+
+
   <!DOCTYPE html>
   <html lang="en">
-  
+
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +60,7 @@ if (usuarioLogueado()) {
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
   </head>
-  
+
   <body>
   <nav class="navibar">
   <?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
@@ -68,7 +72,7 @@ if (usuarioLogueado()) {
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
     <?php if (usuarioLogueado()) : ?>
-    
+
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
     <?php else : ?>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#login">Login</a></li>
@@ -79,10 +83,10 @@ if (usuarioLogueado()) {
     <main class="content" id="home">
     <section class="presentacion">
     <h1 class="presentacion__title">  <img class="contrareloj" src="img/logo-blanco.png" alt="contrareloj"></h1>
-    
+
     <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
     </section>
-    
+
     <section class="descripcion" id="descripcion">
     <div class="descripcion__text">
     <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
@@ -122,7 +126,7 @@ if (usuarioLogueado()) {
       <?php echo $erroresLogin["email"]; ?>
       </div>
       <?php } ?>
-      
+
       <div class="form__group">
       <label class="form__group__text-label" for="pass">Contraseña:</label>
       <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
@@ -139,15 +143,15 @@ if (usuarioLogueado()) {
         contraseña?</a></span>
         </div> -->
         <!-- <p class="form__error-msg">La combinación ingresada de email y contraseña no es válida</p> -->
-        
+
         <button type="submit" class="form__btn submit" name="login" value="ingresar">Login</button>
-        
+
         <p class="form__not-registered">¿No tenés cuenta?<a class="form__not-registered__link" href="#register">Registrate</a></p>
         <input type="hidden" name="login" value="">
         </form>
         </section>
         <?php endif; ?>
-        
+
         <?php if (!usuarioLogueado()) : ?>
         <section class="register-section" id="register">
         <form class="form" action="index.php#register" method="post">
@@ -217,5 +221,5 @@ if (usuarioLogueado()) {
                   <?php endif; ?>
                   </main>
                   </body>
-                  
+
                   </html>

@@ -1,8 +1,8 @@
 <?php
 
-include_once "funciones.php";
-include_once "clases/database.php";
-include_once "clases/pregunta.php";
+require_once "funciones.php";
+require_once "clases/DbMySql.php";
+require_once "clases/pregunta.php";
 
 $db = new Db;
 
@@ -19,7 +19,7 @@ while($pregunta1->getId() == $pregunta2->getId()) {
 if (usuarioLogueado()) {
   $usuario = traerUsuarioLogueado();
 }
-  
+
 
 ?>
 
