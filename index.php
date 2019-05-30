@@ -3,11 +3,13 @@
 require_once("funciones.php");
 require_once("clases/validator.php");
 require_once("clases/DbMySql.php");
+require_once("clases/auth.php");
 
-
+$auth = new Auth;
 $dbMysql = new DbMySql;
 
-
+if(isset($_SESSION["email"])){
+  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]);
                                       // REGISTRO //
 if ($_POST && isset($_POST["register"])) {
 
@@ -37,7 +39,7 @@ if ($_POST && isset($_POST["login"])) {
   //Si no hay errores
   if (empty($erroresLogin)) {
 
-    loguearUsuario($_POST["email"]);
+  $auth->loguearUsuario($_POST["email"]);
     //redirigimos a home
     header("Location:index.php#descripcion");
     exit;
@@ -46,8 +48,8 @@ if ($_POST && isset($_POST["login"])) {
 
 
 }
-if (usuarioLogueado()) {
-  $usuario = traerUsuarioLogueado();}
+if ($auth->usuarioLogueado()) {
+  $usuario = $auth->traerUsuarioLogueado();}
   ?>
 
 
@@ -66,7 +68,7 @@ if (usuarioLogueado()) {
 
   <body>
   <nav class="navibar">
-  <?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
+  <?php if ($auth->usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
     <a class="navibar__home-link" href="perfil.php"> <img src="img/user-vector-flat-3.png" alt="perfilusuario"> </a>
     <ul class="navibar__list2">
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
@@ -74,7 +76,7 @@ if (usuarioLogueado()) {
     <ul class="navibar__list">
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
-    <?php if (usuarioLogueado()) : ?>
+    <?php if ($auth->usuarioLogueado()) : ?>
 
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
     <?php else : ?>
@@ -114,9 +116,9 @@ if (usuarioLogueado()) {
     sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
     </div>
     <a class="btn descripcion__start-btn" href="#home"><span>¡Estoy listo!</span></a>
-    <?php if (!usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
+    <?php if (!$auth->usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
     </section>
-    <?php if (!usuarioLogueado()) : ?>
+    <?php if (!$auth->usuarioLogueado()) : ?>
     <section class="login-section" id="login">
     <form class="form" action="index.php#login" method="POST">
     <h1 class="form__title">Login</h1>
@@ -155,7 +157,7 @@ if (usuarioLogueado()) {
         </section>
         <?php endif; ?>
 
-        <?php if (!usuarioLogueado()) : ?>
+        <?php if (!$auth->usuarioLogueado()) : ?>
         <section class="register-section" id="register">
         <form class="form" action="index.php#register" method="post">
         <h1 class="form__title">Registrate</h1>

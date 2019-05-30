@@ -1,15 +1,15 @@
 <?php
 
 class Usuario {
-  
+
   protected $id;
   protected $name;
   protected $lastname;
-  protected $email;
+  protected $email; 
   protected $password;
-  
+
   function __construct(Array $datos){
-    
+
     if(isset($datos["id"])){
       $this->id = $datos["id"];
       $this->password = $datos["pwd"];
@@ -21,7 +21,7 @@ class Usuario {
     $this->lastname = $datos["lastname"];
     $this->email = $datos["email"];
   }
-  
+
   public function getId(){
     return $this->id;
   }
@@ -37,7 +37,7 @@ class Usuario {
   public function getPassword(){
     return $this->password;
   }
-  
+
   public function setId($id){
     $this->id=$id;
     return $this;
