@@ -21,7 +21,6 @@ public function usuarioLogueado()
   // if(chequeaste "recordarme"){
   //     setcookie();
   // } Crear cookie.
-
   return isset($_SESSION["email"]);
 }
 

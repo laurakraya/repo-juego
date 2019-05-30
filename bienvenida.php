@@ -1,9 +1,12 @@
 <?php
 
-require_once("funciones.php");
-
-
 header("refresh:2; url = index.php#login" );
+
+require_once("clases/DbMySql.php");
+require_once("clases/validator.php");
+require_once("clases/auth.php");
+
+$auth = new Auth;
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,7 @@ header("refresh:2; url = index.php#login" );
     <ul class="navibar__list">
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#home">Inicio</a></li>
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#descripcion">El Juego</a></li>
-      <?php if (usuarioLogueado()) : ?>
+      <?php if ($auth->usuarioLogueado()) : ?>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php">Mi Perfil</a></li>
         <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
       <?php else : ?>

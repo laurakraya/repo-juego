@@ -7,12 +7,15 @@ class Usuario {
   protected $lastname;
   protected $email; 
   protected $password;
+  protected $puntaje;
+  protected $nivel;
+  protected $img_usuario;
 
   function __construct(Array $datos){
 
     if(isset($datos["id"])){
       $this->id = $datos["id"];
-      $this->password = $datos["pwd"];
+      $this->password = $datos["password"];
     } else {
       $this->id = NULL;
       $this->password = password_hash($datos["pwd"], PASSWORD_DEFAULT);
