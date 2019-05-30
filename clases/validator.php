@@ -7,7 +7,7 @@ class Validator {
 
     //Juntar errores del form//
 
-    $errores = []; a
+    $errores = [];
     $datosTrim = [];
     //Eliminar espacion en blanco del form con trim//
     foreach ($datos as $posicion => $valor) {

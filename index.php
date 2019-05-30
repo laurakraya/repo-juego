@@ -1,6 +1,6 @@
 <?php
 
-require_once("funciones.php");
+//require_once("funciones.php");
 require_once("clases/validator.php");
 require_once("clases/DbMySql.php");
 require_once("clases/auth.php");
@@ -9,7 +9,7 @@ $auth = new Auth;
 $dbMysql = new DbMySql;
 
 if(isset($_SESSION["email"])){
-  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]);
+  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]); }
                                       // REGISTRO //
 if ($_POST && isset($_POST["register"])) {
 
