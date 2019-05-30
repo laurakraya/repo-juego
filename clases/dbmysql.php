@@ -9,6 +9,17 @@ class DbMySql extends db {
 
   public function __construct()
   {
+
+   // $config = file_get_contents("config.json");
+   // $configArray = json_decode($config, true);
+   //
+   //
+   // $dbName = $configArray["dbName"];
+   // $dbPort = $configArray["dbport"];
+   // $dbUser = $configArray["dbUser"];
+   // $dbPass = $configArray["dbPass"];
+
+
     $dsn = "mysql:host=127.0.0.1;dbname=juego;port=3306";
     $user = "root";
     $pass = "";

@@ -4,7 +4,10 @@ require_once("funciones.php");
 require_once("clases/validator.php");
 require_once("clases/DbMySql.php");
 
+
 $dbMysql = new DbMySql;
+
+
                                       // REGISTRO //
 if ($_POST && isset($_POST["register"])) {
 
