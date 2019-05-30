@@ -1,24 +1,26 @@
 <?php
 
-require_once("funciones.php");
-require_once("clases/validator.php");
+//require_once("funciones.php");
 require_once("clases/DbMySql.php");
+require_once("clases/validator.php");
+require_once("clases/auth.php");
 
-
+$auth = new Auth;
 $dbMysql = new DbMySql;
 
-
+if(isset($_SESSION["email"])){
+  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]); }
                                       // REGISTRO //
 if ($_POST && isset($_POST["register"])) {
 
   $errores = Validator::validarRegistro($_POST);
   $nameOk = $_POST["name"];
-  $lastNameOk = $_POST["lastName"];
+  $lastnameOk = $_POST["lastname"];
   $emailOk = $_POST["email"];
 
 
   if (empty($errores)) {
-    if (!existeUsuario($_POST["email"])) {
+    if (!$dbMysql->existeUsuario($_POST["email"])) {
 
       $usuario = new Usuario($_POST);      //armarUsuario($_POST);   //crear usuario//
       $dbMysql->guardarUsuario($usuario);  //guardar usuario//
@@ -37,7 +39,7 @@ if ($_POST && isset($_POST["login"])) {
   //Si no hay errores
   if (empty($erroresLogin)) {
 
-    loguearUsuario($_POST["email"]);
+  $auth->loguearUsuario($_POST["email"]);
     //redirigimos a home
     header("Location:index.php#descripcion");
     exit;
@@ -46,8 +48,9 @@ if ($_POST && isset($_POST["login"])) {
 
 
 }
-if (usuarioLogueado()) {
-  $usuario = traerUsuarioLogueado();}
+if ($auth->usuarioLogueado()) {
+  $user = $auth->usuarioLogueado();}
+
   ?>
 
 
@@ -66,15 +69,15 @@ if (usuarioLogueado()) {
 
   <body>
   <nav class="navibar">
-  <?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
+  <?php if ($auth->usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
     <a class="navibar__home-link" href="perfil.php"> <img src="img/user-vector-flat-3.png" alt="perfilusuario"> </a>
     <ul class="navibar__list2">
-    <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
+    <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo $usuario->getName();  ?></a></li>
     </ul><?php endif; ?>
     <ul class="navibar__list">
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
-    <?php if (usuarioLogueado()) : ?>
+    <?php if ($auth->usuarioLogueado()) : ?>
 
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
     <?php else : ?>
@@ -114,9 +117,9 @@ if (usuarioLogueado()) {
     sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
     </div>
     <a class="btn descripcion__start-btn" href="#home"><span>¡Estoy listo!</span></a>
-    <?php if (!usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
+    <?php if (!$auth->usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
     </section>
-    <?php if (!usuarioLogueado()) : ?>
+    <?php if (!$auth->usuarioLogueado()) : ?>
     <section class="login-section" id="login">
     <form class="form" action="index.php#login" method="POST">
     <h1 class="form__title">Login</h1>
@@ -131,8 +134,8 @@ if (usuarioLogueado()) {
       <?php } ?>
 
       <div class="form__group">
-      <label class="form__group__text-label" for="pass">Contraseña:</label>
-      <input class="form__group__text-field" type="password" name="pass" id="pass" placeholder="Password">
+      <label class="form__group__text-label" for="pwd">Contraseña:</label>
+      <input class="form__group__text-field" type="password" name="pwd" id="pwd" placeholder="Password">
       </div>
       <?php if (!empty($erroresLogin["pwd"])) { ?>
         <div class="alert alert-danger" role="alert">
@@ -155,7 +158,7 @@ if (usuarioLogueado()) {
         </section>
         <?php endif; ?>
 
-        <?php if (!usuarioLogueado()) : ?>
+        <?php if (!$auth->usuarioLogueado()) : ?>
         <section class="register-section" id="register">
         <form class="form" action="index.php#register" method="post">
         <h1 class="form__title">Registrate</h1>
@@ -171,15 +174,15 @@ if (usuarioLogueado()) {
           </div>
           <?php } ?>
           <div class="form__group">
-          <label class="form__group__text-label" for="lastName">Apellido</label>
-          <input id="lastName" class="form__group__text-field" name="lastName" type="text" value=""
-          <?php if (isset($lastNameOk) && empty($errores["lastName"])) {
-            echo $lastNameOk;
+          <label class="form__group__text-label" for="lastname">Apellido</label>
+          <input id="lastname" class="form__group__text-field" name="lastname" type="text" value=""
+          <?php if (isset($lastnameOk) && empty($errores["lastname"])) {
+            echo $lastnameOk;
           } ?> placeholder="Ingresá tu apellido">
           </div>
-          <?php if (!empty($errores["lastName"])) { ?>
+          <?php if (!empty($errores["lastname"])) { ?>
             <div class="alert alert-danger" role="alert">
-            <?php echo $errores["lastName"]; ?>
+            <?php echo $errores["lastname"]; ?>
             </div>
             <?php } ?>
             <div class="form__group">

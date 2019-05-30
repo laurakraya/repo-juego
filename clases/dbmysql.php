@@ -57,9 +57,9 @@ class DbMySql extends db {
 
   public function guardarUsuario(Usuario $usuario){
 
-    $stmt = $this->connection->prepare("INSERT INTO usuarios VALUES(default, :name, :lastname, :email, :password)");
+    $stmt = $this->connection->prepare("INSERT INTO usuarios VALUES(default, :email, :name, :lastname, :password, default, default, default)");
 
-    $stmt->bindValue(":name", $usuario->getNombre());
+    $stmt->bindValue(":name", $usuario->getName());
     $stmt->bindValue(":lastname", $usuario->getLastName());
     $stmt->bindValue(":email", $usuario->getEmail());
     $stmt->bindValue(":password", $usuario->getPassword());
@@ -69,8 +69,8 @@ class DbMySql extends db {
   }
 
   function buscarPorEmail($email) {
-    global $db;
-    $stmt = $db->prepare("SELECT * FROM usuarios WHERE email = :email");
+    /* global $db; */
+    $stmt = $this->connection->prepare("SELECT * FROM usuarios WHERE email = :email");
     $stmt->bindValue(":email", $email);
     $stmt->execute();
 

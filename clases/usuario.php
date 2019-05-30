@@ -1,18 +1,21 @@
 <?php
 
 class Usuario {
-  
+
   protected $id;
   protected $name;
   protected $lastname;
-  protected $email;
+  protected $email; 
   protected $password;
-  
+  protected $puntaje;
+  protected $nivel;
+  protected $img_usuario;
+
   function __construct(Array $datos){
-    
+
     if(isset($datos["id"])){
       $this->id = $datos["id"];
-      $this->password = $datos["pwd"];
+      $this->password = $datos["password"];
     } else {
       $this->id = NULL;
       $this->password = password_hash($datos["pwd"], PASSWORD_DEFAULT);
@@ -21,7 +24,7 @@ class Usuario {
     $this->lastname = $datos["lastname"];
     $this->email = $datos["email"];
   }
-  
+
   public function getId(){
     return $this->id;
   }
@@ -37,7 +40,7 @@ class Usuario {
   public function getPassword(){
     return $this->password;
   }
-  
+
   public function setId($id){
     $this->id=$id;
     return $this;
