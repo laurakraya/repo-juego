@@ -6,7 +6,7 @@ class Pregunta {
   protected $fecha_Nac;
   protected $niveles_id;
   protected $nombre;
-  
+
   public function __construct(Array $array)
   {
     $this->id = $array["id"];
@@ -15,28 +15,28 @@ class Pregunta {
     $this->niveles_id = $array["niveles_id"];
     $this->nombre = $array["nombre"];
   }
-  
+
   public function getId() {
     return $this->id;
   }
-  
+
   public function setId($id) {
     $this->id = $id;
     return $this;
   }
-  
+
   public function getImagen () {
     return $this->imagen;
   }
-  
-  public function getFechaNac () {
+
+  public function getFecha_Nac () {
     return $this->fecha_Nac;
   }
-  
+
   public function getNivelesId () {
     return $this->niveles_id;
   }
-  
+
   public function getNombre () {
     return $this->nombre;
   }

@@ -2,6 +2,7 @@
 
 require_once("db.php");
 require_once("usuario.php");
+require_once("pregunta.php");
 
 
 class DbMySql extends db {
@@ -84,16 +85,19 @@ class DbMySql extends db {
     }
   }
 
-  public function guardarImagen(imagenes $imagen){
+  public function guardarPregunta(Pregunta $pregunta){
 
-    $stmt = $this->connection->prepare("INSERT INTO preguntas VALUES(default, :imagen, :fecha_Nac, :nombre)");
+    $stmt = $this->connection->prepare("INSERT INTO preguntas VALUES(default, :imagen, :fecha_Nac, null, :nombre)");
 
-    $stmt->bindValue(":imagen", $imagen->getImagen());
-    $stmt->bindValue(":fecha_Nac", $imagen->getfecha_Nac());
-    $stmt->bindValue(":nombre", $imagen->getnombre());
+    $stmt->bindValue(":imagen", $pregunta->getImagen());
+    $stmt->bindValue(":fecha_Nac", $pregunta->getFecha_Nac());
+    $stmt->bindValue(":nombre", $pregunta->getNombre());
 
     $stmt->execute();
 
-  }
 
+  }
+  public function existeUsuario($email){
+      return $this->buscarPorEmail($email) !== null;
+    }
 }
