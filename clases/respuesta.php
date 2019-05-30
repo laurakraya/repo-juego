@@ -8,7 +8,7 @@ class Respuesta {
   protected $usuario_ID;
   protected $imagenA_ID;
   protected $imagenB_ID;
-
+  
   public function __construct(Array $array)
   {
     $this->fecha_partida = $array["fecha_partida"];
@@ -18,11 +18,11 @@ class Respuesta {
     $this->usuarioA_ID = $array["usuarioA_ID"];
     $this->usuarioB_ID = $array["usuarioB_ID"];
   }
-
+  
   public function getId() {
     return $this->id;
   }
-
+  
   public function setId($id) {
     $this->id = $id;
     return $this;
@@ -31,23 +31,23 @@ class Respuesta {
   public function getFechaPartida () {
     return $this->fecha_partida;
   }
-
+  
   public function getRtaCorrecta () {
     return $this->rta_correcta;
   }
-
+  
   public function getRespuestaUsuario () {
     return $this->respuesta_usuario;
   }
-
+  
   public function getUsuarioId () {
     return $this->usuario_ID;
   }
-
+  
   public function getUsuarioAId () {
     return $this->usuarioA_ID;
   }
-
+  
   public function getUsuarioBId () {
     return $this->usuarioB_ID;
   }

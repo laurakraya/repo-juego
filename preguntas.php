@@ -1,10 +1,10 @@
 <?php
 
 require_once "funciones.php";
-require_once "clases/DbMySql.php";
+require_once "clases/dbmysql.php";
 require_once "clases/pregunta.php";
 
-$db = new Db;
+$db = new DbMySql;
 
 //MIRÁ MIRÁ MIRÁ como no repetimos imágenes
 
