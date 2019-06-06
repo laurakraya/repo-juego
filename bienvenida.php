@@ -1,6 +1,6 @@
 <?php
 
-header("refresh:2; url = index.php#login" );
+header("refresh:2; url = index.php#login");
 
 require_once("clases/DbMySql.php");
 require_once("clases/validator.php");
@@ -23,20 +23,9 @@ $auth = new Auth;
 </head>
 
 <body>
-  <nav class="navibar">
-    <a class="navibar__home-link" href="index.php"><i class="fas fa-home fa-2x"></i></a>
-    <ul class="navibar__list">
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#home">Inicio</a></li>
-      <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#descripcion">El Juego</a></li>
-      <?php if ($auth->usuarioLogueado()) : ?>
-        <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php">Mi Perfil</a></li>
-        <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
-      <?php else : ?>
-        <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#login">Login</a></li>
-        <li class="navibar__list__item"><a class="navibar__list__item__link" href="index.php#register">Registro</a></li>
-      <?php endif; ?>
-    </ul>
-  </nav>
+  <?php
+  include 'partials/navbar.php';
+  ?>
   <section>
 
     <div class="alert alert-success" role="alert">
@@ -44,6 +33,7 @@ $auth = new Auth;
     </div>
 
   </section>
+  <script src="js/app.js"></script>
 </body>
 
 </html>

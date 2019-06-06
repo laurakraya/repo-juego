@@ -88,8 +88,8 @@ body {
   padding: 20px;
   background-color: black;
   z-index: 5;
+  padding-right: 0px;
 }
-
 .navibar img {
   height: 40px;
   width: 40px;
@@ -97,8 +97,65 @@ body {
 .navibar__home-link {
   margin-right: auto;
   color: white;
+  transition: color ease 0.3s;
 }
 .navibar__home-link:hover {
+  color: blueviolet;
+}
+.navibar__user {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 10px;
+  padding-right: 20px;
+}
+.navibar__user__pic {
+  border: 3px solid blueviolet;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  background-position: center;
+  background-size: cover;
+}
+.navibar__user__name {
+  margin: 0 10px;
+  text-transform: capitalize;
+}
+.navibar__user__btn {
+  color: white;
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+.navibar__user__btn:hover {
+  color: blueviolet;
+}
+.navibar__user__options {
+  position: absolute;
+  right: 0px;
+  bottom: -8px;
+  transform: translate(0%, 100%);
+  background: black;
+  width: 100%;
+  text-align: right;
+  padding: 10px;
+  padding-right: 20px;
+  visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+}
+.navibar__user__options.active {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.5s ease-in-out, visibility 0s linear 0s;
+}
+.navibar__user__options a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px 0px;
+  transition: color ease 0.3s;
+}
+.navibar__user__options a:hover {
   color: blueviolet;
 }
 .navibar__list {
@@ -115,12 +172,17 @@ body {
 .navibar__list__item {
   margin: 0px 10px;
 }
+.navibar__list__item:last-child {
+  margin-right: 30px;
+}
 .navibar__list__item__link {
   color: white;
   font-weight: 400;
+  transition: color ease 0.3s;
 }
 .navibar__list__item__link:hover {
   color: blueviolet;
+  text-decoration: none;
 }
 
 .content {
@@ -135,7 +197,7 @@ body {
 }
 
 section {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,7 +206,7 @@ section {
 }
 
 .presentacion {
-  height: 100vh;
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -189,6 +251,12 @@ section {
 .descripcion__start-btn {
   margin-top: 40px;
   width: 100%;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0.5s;
+  opacity: 1;
+}
+.descripcion__start-btn:hover {
+  opacity: 0.8;
+  color: white;
 }
 
 .form {
@@ -229,6 +297,11 @@ section {
   font-family: "Lato", sans-serif;
   padding: 5px;
   line-height: 1em;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0.5s;
+  opacity: 1;
+}
+.form__btn:hover {
+  opacity: 0.8;
 }
 .form__btn--reset {
   margin-top: 10px;
@@ -279,6 +352,12 @@ section {
 }
 .form__not-registered__link {
   margin-left: 10px;
+  color: #440A7F;
+  transition: all ease 0.3s;
+}
+.form__not-registered__link:hover {
+  font-weight: 700;
+  text-decoration: none;
   color: #440A7F;
 }
 
