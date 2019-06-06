@@ -1,13 +1,16 @@
 <?php
 
-require_once("funciones.php");
+require_once("clases/DbMySql.php");
+require_once("clases/auth.php");
 
-if (!usuarioLogueado()) {
-  header("Location:index.php");
+$auth = new Auth;
+
+$dbMysql = new DbMySql;
+
+if ($auth->usuarioLogueado()) {
+  $user = $auth->usuarioLogueado();
+  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]); 
 }
-$usuario = traerUsuarioLogueado();
-
-
 
 ?>
 <!DOCTYPE html>
@@ -26,15 +29,15 @@ $usuario = traerUsuarioLogueado();
 
 <body>
 <nav class="navibar">
-<?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
+<?php if ($auth->usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
   <a class="navibar__home-link" href="perfil.php"> <img src="img/user-vector-flat-3.png" alt="perfilusuario"> </a>
   <ul class="navibar__list2">
-  <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
+  <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo $usuario->getName();;  ?></a></li>
   </ul><?php endif; ?>
   <ul class="navibar__list">
   <li class="navibar__list__item"><a class="navibar__list__item__link" href="#home">Inicio</a></li>
   <li class="navibar__list__item"><a class="navibar__list__item__link" href="#descripcion">El Juego</a></li>
-  <?php if (usuarioLogueado()) : ?>
+  <?php if ($auth->usuarioLogueado()) : ?>
   
   <li class="navibar__list__item"><a class="navibar__list__item__link" href="logout.php">Logout</a></li>
   <?php else : ?>
@@ -44,7 +47,7 @@ $usuario = traerUsuarioLogueado();
   </ul>
   </nav>
   <section class="profile">
-  <h1 class="profile__title"><?php echo "$usuario[name]" . " " . "$usuario[lastname]";  ?></h1>
+  <h1 class="profile__title"><?php echo $usuario->getName() . " " . $usuario->getLastName();  ?></h1>
   <div class="profile__info">
   <div class="profile__info__avatar">
   <div class="profile__info__avatar__pic" style="background-image: url('img/profile-placeholder.png')"></div>
@@ -53,15 +56,15 @@ $usuario = traerUsuarioLogueado();
   <ul class="profile-data__list">
   <li class="profile-data__list__item">
   <span class="profile-data__list__item__label">Nombre:</span>
-  <span class="profile-data__list__item__data"><?php echo "$usuario[name]"; ?></span>
+  <span class="profile-data__list__item__data"><?php echo $usuario->getName(); ?></span>
   </li>
   <li class="profile-data__list__item">
   <span class="profile-data__list__item__label">Apellido:</span>
-  <span class="profile-data__list__item__data"><?php echo "$usuario[lastname]"; ?></span>
+  <span class="profile-data__list__item__data"><?php echo $usuario->getLastName(); ?></span>
   </li>
   <li class="profile-data__list__item">
   <span class="profile-data__list__item__label">Mail:</span>
-  <span class="profile-data__list__item__data"><?php echo "$usuario[email]"; ?></span>
+  <span class="profile-data__list__item__data"><?php echo $usuario->getEmail(); ?></span>
   </li>
   </ul>
   </div>

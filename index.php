@@ -1,6 +1,5 @@
 <?php
 
-//require_once("funciones.php");
 require_once("clases/DbMySql.php");
 require_once("clases/validator.php");
 require_once("clases/auth.php");
@@ -8,9 +7,13 @@ require_once("clases/auth.php");
 $auth = new Auth;
 $dbMysql = new DbMySql;
 
-if(isset($_SESSION["email"])){
-  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]); }
-                                      // REGISTRO //
+if ($auth->usuarioLogueado()) {
+  $user = $auth->usuarioLogueado();
+  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]);
+}
+
+// REGISTRO //
+
 if ($_POST && isset($_POST["register"])) {
 
   $errores = Validator::validarRegistro($_POST);
@@ -29,7 +32,8 @@ if ($_POST && isset($_POST["register"])) {
     }
   }
 }
-                                         // LOGIN //
+
+// LOGIN //
 
 
 if ($_POST && isset($_POST["login"])) {
@@ -48,10 +52,8 @@ if ($_POST && isset($_POST["login"])) {
 
 
 }
-if ($auth->usuarioLogueado()) {
-  $user = $auth->usuarioLogueado();}
 
-  ?>
+?>
 
 
   <!DOCTYPE html>
@@ -116,7 +118,11 @@ if ($auth->usuarioLogueado()) {
     pellentesque
     sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
     </div>
-    <a class="btn descripcion__start-btn" href="#home"><span>¡Estoy listo!</span></a>
+    <?php if ($auth->usuarioLogueado()) : ?>
+      <a class="btn descripcion__start-btn" href="preguntas.php"><span>¡Estoy listo!</span></a>
+    <?php else : ?>
+      <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listo!</span></a>
+    <?php endif; ?>
     <?php if (!$auth->usuarioLogueado()) : ?><a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a><?php endif; ?>
     </section>
     <?php if (!$auth->usuarioLogueado()) : ?>

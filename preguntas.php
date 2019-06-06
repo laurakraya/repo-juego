@@ -1,25 +1,27 @@
 <?php
 
-require_once "funciones.php";
-require_once "clases/dbmysql.php";
-require_once "clases/pregunta.php";
+require_once("clases/DbMySql.php");
+require_once("clases/pregunta.php");
+require_once("clases/auth.php");
 
-$db = new DbMySql;
+$auth = new Auth;
+
+$dbMysql = new DbMySql;
 
 //MIRÁ MIRÁ MIRÁ como no repetimos imágenes
 
-$pregunta1 = $db->buscarPregunta();
+$pregunta1 = $dbMysql->buscarPregunta();
 
-$pregunta2 = $db->buscarPregunta();
+$pregunta2 = $dbMysql->buscarPregunta();
 
 while($pregunta1->getId() == $pregunta2->getId()) {
-  $pregunta2 = $db->buscarPregunta();
+  $pregunta2 = $dbMysql->buscarPregunta();
 }
 
-if (usuarioLogueado()) {
-  $usuario = traerUsuarioLogueado();
+if ($auth->usuarioLogueado()) {
+  $user = $auth->usuarioLogueado();
+  $usuario = $dbMysql->buscarPorEmail($_SESSION["email"]); 
 }
-
 
 ?>
 
@@ -38,10 +40,10 @@ crossorigin="anonymous">
 </head>
 <body>
   <nav class="navibar">
-    <?php if (usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
+    <?php if ($auth->usuarioLogueado()) : // REEMPLAZAR LA FOTO DEFAULT POR LA QUE SUBE EL USUARIO ?>
     <a class="" href="perfil.php"> <img src="img/user-vector-flat-3.png" alt="perfilusuario"> </a>
     <ul class="">
-    <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo "$usuario[name]";  ?></a></li>
+    <li class="navibar__list__item"><a class="navibar__list__item__link" href="perfil.php"><?php echo $usuario->getName();  ?></a></li>
     </ul>
     <?php endif; ?>
   </nav>
