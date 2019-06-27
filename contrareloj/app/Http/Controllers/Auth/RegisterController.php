@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -46,14 +46,27 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+     protected function validator(array $data)
+     {
+         $rules = [
+             'name' => ['required', 'string', 'max:80'],
+             'lastname' => ['required', 'string', 'max:80'],
+             'email' => ['required', 'string', 'email', 'max:80', 'unique:users'],
+             'password' => ['required', 'string', 'min:8', 'confirmed'],
+         ];
+
+         $messages = [
+           'required' => 'El :attribute es obligatorio.',
+           'string' => ':attribute debe ser una cadena de texto.',
+           'max' =>'El :attribute no debe superar :max',
+           'min' =>'El :attribute deber tener al menos :min caracteres.',
+           'confirmed' =>'Las :attribute no coinciden',
+           'unique' =>'El :attribute ya esta en uso',
+
+         ];
+
+         return Validator::make($data, $rules, $messages);
+     }
 
     /**
      * Create a new user instance after a valid registration.
@@ -65,6 +78,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

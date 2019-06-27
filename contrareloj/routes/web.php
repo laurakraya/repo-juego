@@ -22,3 +22,6 @@ Route::get('/challenge', function() {
 Route::get('/profile', function() {
     return view('front.profile');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
