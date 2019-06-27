@@ -4,11 +4,11 @@
   <main class="content">
     <div class="area-juego">
       <div class="area-juego__display">
-        <div class="area-juego__display__img" style="">
+      <div class="area-juego__display__img" style="background-image: url('{{asset('img/'.$img1->image)}}')">
           <span>A</span>
         </div>
-        <div class="area-juego__display__img" style="<">
-          <span>B</span>
+        <div class="area-juego__display__img" style="background-image: url('{{asset('img/'.$img2->image)}}')">
+        <span>{{$img2}}</span>
         </div>
       </div>
       <div class="area-juego__opciones">

@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('front.index');
 });
 
-Route::get('/challenge', function() {
+/* Route::get('/challenge', function() {
     return view('front.challenge');
-});
+}); */
 
 Route::get('/profile', function() {
     return view('front.profile');
 });
+
+Route::get('/challenge', 'ChallengeController@challenge');
