@@ -161,7 +161,7 @@ body {
 .navibar__list {
   display: flex;
   flex-direction: row;
-
+  align-items: center;
 }
 .navibar__list2 {
   display: flex;
@@ -263,6 +263,9 @@ section {
   width: 100%;
   max-width: 80%;
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .form__title {
   text-align: center;
@@ -299,9 +302,12 @@ section {
   line-height: 1em;
   transition: opacity 0.3s ease-in-out, visibility 0s linear 0.5s;
   opacity: 1;
+  margin: 15px auto;
+  max-width: 400px;
 }
 .form__btn:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 .form__btn--reset {
   margin-top: 10px;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Contrareloj\Http\Controllers;
 
-use App\Image;
+use Contrareloj\Image;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller

@@ -31,11 +31,14 @@
           pellentesque
           sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
         </div>
-        <a class="btn descripcion__start-btn" href="preguntas.php"><span>¡Estoy listo!</span></a>
-        <a class="btn descripcion__start-btn" href="#login"><span>¡Estoy listo!</span></a>
-        <a class="btn descripcion__start-btn" href="#register"><span>¡Soy nuevo!</span></a>
+        @guest
+          <a class="btn descripcion__start-btn" href="/login"><span>¡Estoy listo!</span></a>
+          <a class="btn descripcion__start-btn" href="/register"><span>¡Soy nuevo!</span></a>
+        @else 
+          <a class="btn descripcion__start-btn" href="/challenge"><span>¡Estoy listo!</span></a>
+        @endguest
       </section>
-      <section class="login-section" id="login">
+{{--       <section class="login-section" id="login">
         <form class="form" action="index.php#login" method="POST">
           <h1 class="form__title">Login</h1>
           <div class="form__group">
@@ -57,9 +60,9 @@
           <p class="form__not-registered">¿No tenés cuenta?<a class="form__not-registered__link" href="#register">Registrate</a></p>
           <input type="hidden" name="login" value="">
         </form>
-      </section>
+      </section> --}}
       
-      <section class="register-section" id="register">
+{{--       <section class="register-section" id="register">
         <form class="form" action="index.php#register" method="post">
           <h1 class="form__title">Registrate</h1>
           <div class="form__group">
@@ -100,6 +103,6 @@
           <!-- <button class="form__btn form__btn--reset" type="reset" name="">Cancelar</button> -->
           <input type="hidden" name="register" value="">
         </form>
-      </section>
+      </section> --}}
     </main>
     @endsection
