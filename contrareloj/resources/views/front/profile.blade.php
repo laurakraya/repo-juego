@@ -16,15 +16,15 @@
         <ul class="profile-data__list">
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Nombre:</span>
-            <span class="profile-data__list__item__data"></span>
+            <span class="profile-data__list__item__data">{{ Auth::user()->name }}</span>
           </li>
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Apellido:</span>
-            <span class="profile-data__list__item__data"></span>
+            <span class="profile-data__list__item__data">{{ Auth::user()->lastname }}</span>
           </li>
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Mail:</span>
-            <span class="profile-data__list__item__data"></span>
+            <span class="profile-data__list__item__data">{{ Auth::user()->email }}</span>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
           <input class="change-avatar__form__input" type="file" id="avatar" class="form-control" name="avatar">
           <button class="change-avatar__form__btn" name="submit" type="submit">Subir</button>
         </div>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert">No se pudo cargar la imagen
         </div>
       </form>
     </div>

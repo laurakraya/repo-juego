@@ -8,7 +8,7 @@
           <span>A</span>
         </div>
         <div class="area-juego__display__img" style="background-image: url('{{asset('img/'.$img2->image)}}')">
-        <span>{{$img2}}</span>
+        <span>B</span>
         </div>
       </div>
       <div class="area-juego__opciones">

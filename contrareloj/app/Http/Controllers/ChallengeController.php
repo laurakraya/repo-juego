@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Contrareloj\Http\Controllers;
 
-use App\Image;
-use App\Challenge;
+use Contrareloj\Image;
+use Contrareloj\Challenge;
 use Illuminate\Http\Request;
 
 class ChallengeController extends Controller

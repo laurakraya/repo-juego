@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\User.php;
+namespace Contrareloj\Http\Controllers;
+use Contrareloj\User\php;
 use Illuminate\Http\Request;
 
 
