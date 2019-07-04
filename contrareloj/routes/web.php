@@ -23,6 +23,8 @@ Route::get('/profile', function() {
     return view('front.profile');
 });
 
+Route::post("/profile", "UserController@store");
+
 Route::get('/challenge', 'ChallengeController@challenge');
 
 Auth::routes();

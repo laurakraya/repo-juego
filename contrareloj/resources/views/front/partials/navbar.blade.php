@@ -3,7 +3,7 @@
 <nav class="navibar">
   <a class="navibar__home-link" href="/"><i class="fas fa-home fa-2x"></i></a>
   <ul class="navibar__list">
-    
+
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/">Inicio</a></li>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/#descripcion">El Juego</a></li>
     @guest
@@ -11,7 +11,7 @@
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/register">Registro</a></li>
     @else
     <div class="navibar__user">
-      <a class="navibar__user__pic" href="/profile" style="background-image: url('img/profile-placeholder.png')"></a>
+      <a class="navibar__user__pic" href="/profile" style="background-image: url('/storage/{{Auth::user()->user_image }}')"></a>
       <p class="navibar__user__name"> {{ Auth::user()->name }} </p>
       <a class="navibar__user__btn" href=""><i class="fas fa-sort-down"></i></a>
       <ul class="navibar__user__options">
@@ -28,6 +28,6 @@
     </ul>
   </div>
   @endguest
-  
+
 </ul>
 </nav>
