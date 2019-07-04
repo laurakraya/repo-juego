@@ -31,7 +31,11 @@
     </div>
     <div class="change-avatar">
       <form class="change-avatar__form" action="" method="POST" enctype="multipart/form-data">
+<<<<<<< HEAD
           @csrf
+=======
+        {{csrf_field()}}
+>>>>>>> b5eef23e5b48926d7e824de479b5abeee59714f9
         <label class="change-avatar__form__label" for="avatar">Cambiar avatar:</label>
         <div>
           <input class="change-avatar__form__input" type="file" id="user_image" class="form-control" name="user_image">
