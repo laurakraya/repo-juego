@@ -10,7 +10,7 @@
     <h1 class="profile__title"></h1>
     <div class="profile__info">
       <div class="profile__info__avatar">
-        <div class="profile__info__avatar__pic" style="background-image: url('img/profile-placeholder.png')"></div>
+        <div class="profile__info__avatar__pic" style="background-image: url('/storage/{{Auth::user()->user_image }}')"></div>
       </div>
       <div class="profile__info__data">
         <ul class="profile-data__list">
@@ -33,7 +33,7 @@
       <form class="change-avatar__form" action="" method="POST" enctype="multipart/form-data">
         <label class="change-avatar__form__label" for="avatar">Cambiar avatar:</label>
         <div>
-          <input class="change-avatar__form__input" type="file" id="avatar" class="form-control" name="avatar">
+          <input class="change-avatar__form__input" type="file" id="user_image" class="form-control" name="user_image">
           <button class="change-avatar__form__btn" name="submit" type="submit">Subir</button>
         </div>
         <div class="alert alert-danger" role="alert">No se pudo cargar la imagen
