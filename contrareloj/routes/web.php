@@ -29,8 +29,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/newImage', function(){
+/* Route::get('/newImage', function(){
   return view("imageForm");
-});
+}); */
+
+Route::get('/newImage', 'LevelController@index');
 
 Route::post("/newImage", "ImageController@store");

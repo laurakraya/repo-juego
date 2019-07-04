@@ -22,7 +22,12 @@
       </p>
       <p>
         <label for="level">Nivel de dificultad</label>
-        <input id="level" type="number" name="levels_id" value="">
+        {{-- <input id="level" type="number" name="levels_id" value=""> --}}
+        <select name="levels_id" id="level">
+          @foreach($levels as $level)
+              <option value="{{ $level->id }}">{{ $level->levels}}</option>
+          @endforeach 
+        </select>
       </p>
       <p>
         <button type="submit" name="button">Enviar</button>

@@ -3,6 +3,7 @@
 namespace Contrareloj\Http\Controllers;
 
 use Contrareloj\Image;
+use Contrareloj\Level;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -13,6 +14,8 @@ class ImageController extends Controller
 
  public function store(Request $req){
    $newImage = new Image();
+
+   $levels = Level::all();
 
    $path = $req->file("image")->store("public");
    $fileName = basename($path);
@@ -26,6 +29,8 @@ class ImageController extends Controller
 
       $newImage-> save();
 
-      return view("imageForm");
+      $vac = compact('levels');
+
+      return view("imageForm", $vac);
     }
 }
