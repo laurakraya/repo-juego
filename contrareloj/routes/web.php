@@ -1,4 +1,7 @@
 <?php
+//use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,9 @@ Route::get('/profile', function() {
 
 Route::post("/profile", "UserController@store");
 
-Route::get('/challenge', 'ChallengeController@challenge');
+Route::get('/challenge', 'ChallengeController@create');
+
+Route::post('/challenge', 'ChallengeController@update');
 
 Auth::routes();
 
