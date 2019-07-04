@@ -6,7 +6,7 @@
     <title>Formulario de Carga</title>
   </head>
   <body>
-    <form class="form" action="/newImage" method="post" enctype="multipart/form-data"> /escribir la ruta
+    <form class="form" action="/newImage" method="post" enctype="multipart/form-data">
        {{csrf_field()}}
       <p>
         <label for="imagen">URL de la Imagen</label>
