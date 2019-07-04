@@ -9,20 +9,23 @@ class ImageController extends Controller
 {
 
 
-//public function getForm(){
-//  return view("imageForm")
-//}
 
-// public function newImage(Request $req){
-  // $newImage = new Image();
 
-  // $newImage -> image = $req["image"];
-//   $newImage -> birth_date = $req["birth_date"];
-//   $newImage -> name = $req["name"];
-//   $newImage -> level_id = $req["level_ids"];
+ public function store(Request $req){
+   $newImage = new Image();
 
-//   $newImage-> save()
+   $path = $req->file("image")->store("public");
+   $fileName = basename($path);
 
-//   return view("imageForm")
- }
+   //dd($fileName);
+
+    $newImage -> image = $fileName;
+    $newImage -> birth_date = $req["birth_date"];
+    $newImage -> name = $req["name"];
+    $newImage -> levels_id = $req["levels_id"];
+
+      $newImage-> save();
+
+      return view("imageForm");
+    }
 }

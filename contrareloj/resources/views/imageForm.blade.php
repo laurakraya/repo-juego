@@ -6,19 +6,23 @@
     <title>Formulario de Carga</title>
   </head>
   <body>
-    <form class="form" action="/newImage" method="post"> /escribir la ruta
+    <form class="form" action="/newImage" method="post" enctype="multipart/form-data"> /escribir la ruta
        {{csrf_field()}}
       <p>
         <label for="imagen">URL de la Imagen</label>
-        <input id="imagen" type="file" name="imagen" value="">
+        <input id="imagen" type="file" name="image" value="">
       </p>
       <p>
         <label for="fecha de Nacimiento">Fecha de Nacimiento</label>
-        <input id="fecha_Nac"  type="text" name="fecha_Nac" value="">
+        <input id="birth_date"  type="text" name="birth_date" value="">
       </p>
       <p>
-        <label for="nombre">Nombre</label>
-        <input id="nombre" type="text" name="nombre" value="">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" name="name" value="">
+      </p>
+      <p>
+        <label for="level">Nivel de dificultad</label>
+        <input id="level" type="number" name="levels_id" value="">
       </p>
       <p>
         <button type="submit" name="button">Enviar</button>

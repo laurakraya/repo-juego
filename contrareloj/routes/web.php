@@ -29,5 +29,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/newImage', "ImageController@getForm");
-//Route::post("/newImage", "ImageController@newImage")
+Route::get('/newImage', function(){
+  return view("imageForm");
+});
+
+Route::post("/newImage", "ImageController@store");
