@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ChallengeController extends Controller
 {
-    public function create() 
+    public function create($lvlId = 1) 
     {
         $lastChallenge = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('state', '=', '0')->last();
 
@@ -26,8 +26,7 @@ class ChallengeController extends Controller
         }
 
 
-        $images = Image::get()->shuffle()->take(2);
-
+        $images = Image::get()->where('levels_id', '=', $lvlId)->shuffle()->take(2);
 
         $challenge = new Challenge();
 
@@ -67,7 +66,8 @@ class ChallengeController extends Controller
                 'challengeId' => $challengeId,
                 'challengeNumber' => $stateCeroCount,
                 'correctAnswers' => $answeredCorrectlyCount,
-                'userScore' => $userScore
+                'userScore' => $userScore,
+                'lvlId' => $lvlId
             ]);
 
         }

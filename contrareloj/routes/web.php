@@ -28,7 +28,7 @@ Route::get('/profile', function() {
 
 Route::post("/profile", "UserController@store");
 
-Route::get('/challenge', 'ChallengeController@create');
+Route::get('/challenge/{lvlId?}/', 'ChallengeController@create');
 
 Route::post('/challenge', 'ChallengeController@update');
 

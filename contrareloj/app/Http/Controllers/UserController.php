@@ -17,7 +17,7 @@ class UserController extends Controller
     public function store(Request $req){
     $user = Auth::User ();
 
-    $path = $req->file("user_image")->store("public");
+    $path = $req->file("user_image")->store("public/profile");
     $fileName = basename($path);
 
 

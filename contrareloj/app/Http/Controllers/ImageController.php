@@ -17,7 +17,9 @@ class ImageController extends Controller
 
    $levels = Level::all();
 
-   $path = $req->file("image")->store("public");
+   $lvlId = $req["levels_id"];
+
+   $path = $req->file("image")->store("public/levels/level" . $lvlId . "/");
    $fileName = basename($path);
 
    //dd($fileName);

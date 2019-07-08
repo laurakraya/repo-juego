@@ -9,7 +9,7 @@
       <input type="hidden" name="challenge_id" value="{{$challengeId}}">
         <input type="hidden" name="user_answer" value="1">
         {{-- <button type="submit">></button> --}}
-        <button type="submit" class="area-juego__display__img" style="background-image: url('{{asset('img/'.$img1->image)}}')">
+        <button type="submit" class="area-juego__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img1->image}}')">
           <span>A</span>
         </button>
       </form>
@@ -18,7 +18,7 @@
           <input type="hidden" name="challenge_id" value="{{$challengeId}}">  
         <input type="hidden" name="user_answer" value="2">
         {{-- <button type="submit"><</button> --}}
-        <button type="submit" class="area-juego__display__img" style="background-image: url('{{asset('img/'.$img2->image)}}')">
+        <button type="submit" class="area-juego__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img2->image}}')">
           <span>B</span>
         </button>
       </form>
