@@ -43,3 +43,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/newImage', 'LevelController@index');
 
 Route::post("/newImage", "ImageController@store");
+
+Route::get('/ranking', 'RankingController@index')
