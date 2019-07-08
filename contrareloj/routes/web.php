@@ -44,4 +44,4 @@ Route::get('/newImage', 'LevelController@index');
 
 Route::post("/newImage", "ImageController@store");
 
-Route::get('/ranking', 'RankingController@index')
+Route::get('/ranking', 'RankingController@index');

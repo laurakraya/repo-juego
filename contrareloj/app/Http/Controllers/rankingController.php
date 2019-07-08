@@ -3,14 +3,18 @@
 namespace Contrareloj\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use Contrareloj\User;
 
 class rankingController extends Controller
 {
     public function index(){
-      $puntos = User::All()
-      $vac = compact("puntos")
-      return view("ranking",$vac);
+
+      $puntos = User::all();
+
+      $vac = compact('puntos');
+
+      return view("front.ranking", $vac);
+
     }
 
 }
