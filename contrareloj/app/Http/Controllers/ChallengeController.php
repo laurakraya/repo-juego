@@ -4,6 +4,7 @@ namespace Contrareloj\Http\Controllers;
 
 use Contrareloj\Image;
 use Contrareloj\Challenge;
+use Contrareloj\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,20 +13,18 @@ class ChallengeController extends Controller
 {
     public function create() 
     {
-        $lastChallenge = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('status', '=', '0')->max('id');
+        $lastChallenge = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('state', '=', '0')->last();
 
-        // PRIMER IF
+        if($lastChallenge) {
+            $lastChallengeDate = $lastChallenge -> created_at;
 
-        //Si la fecha de lastChallenge tiene una diferencia mayor a 2min con la fecha actual, cambiar el estado agarrar todas los challenges con state 0 y cambiárselo a 1
-        
-        //Si la diferencia es menor, ejecuta la siguiente condición
+            $diffInMin = $lastChallengeDate->diffInMinutes(Carbon::now());
+    
+            if($diffInMin >= 1) {
+                Challenge::where('user_id', '=', Auth::user()->id)->where('state', '=', '0')->update(['state' => '1']);
+            }
+        }
 
-
-        //SEGUNDO IF
-
-        //Si la count de challenges del usuario con state 0 es menor a 10, ejecutar create challenge
-
-        //Si es igual o mayor, llevar a vista con botón de jugar otro
 
         $images = Image::get()->shuffle()->take(2);
 
@@ -38,13 +37,40 @@ class ChallengeController extends Controller
 
         $challenge->save();
 
-        $challengeId = Challenge::all()->where('user_id', '=', Auth::user()->id)->max('id');
+        $stateCero = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('state', '=', '0');
+        $stateCeroCount = $stateCero->count();
 
-        return view('front.challenge', [
-            'img1' => $images[0], 
-            'img2' => $images[1],
-            'challengeId' => $challengeId
-        ]);
+        $answeredCorrectly = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('correct_answer', '=', '1')->where('state', '=', '0');
+        $answeredCorrectlyCount = $answeredCorrectly->count();
+
+        if($stateCeroCount == 10) {
+
+            if($answeredCorrectlyCount >= 7) {
+                $user = User::find(Auth::user()->id);
+                $user -> score += 100;
+    
+                $user->update();
+            }
+
+            Challenge::where('user_id', '=', Auth::user()->id)->where('state', '=', '0')->update(['state' => '1']);
+
+            return redirect()->action('RankingController@index');
+
+        } else {
+
+            $challengeId = Challenge::all()->where('user_id', '=', Auth::user()->id)->max('id');
+            $userScore = User::find(Auth::user()->id)->score;
+
+            return view('front.challenge', [
+                'img1' => $images[0], 
+                'img2' => $images[1],
+                'challengeId' => $challengeId,
+                'challengeNumber' => $stateCeroCount,
+                'correctAnswers' => $answeredCorrectlyCount,
+                'userScore' => $userScore
+            ]);
+
+        }
     }
 
     public function update(Request $req) 
@@ -68,6 +94,11 @@ class ChallengeController extends Controller
 
         if(($userAnswer == 1 && $correctAnswer === true) || ($userAnswer == 2 && $correctAnswer === false)) {
             $answerWasRight = 1;
+
+            $user = User::find(Auth::user()->id);
+            $user -> score += 10;
+
+            $user->update();
         } 
         
         $challenge -> correct_answer = $answerWasRight;

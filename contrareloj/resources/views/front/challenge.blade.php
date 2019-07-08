@@ -22,6 +22,9 @@
           <span>B</span>
         </button>
       </form>
+      <p>Challenge número: {{$challengeNumber}}</p>
+      <p>Respuestas correctas: {{$correctAnswers}}</p>
+    <p>Puntaje: {{$userScore}}</p>
     </div>
     <div class="area-juego__opciones">
 {{--       <form class="area-juego__btn" action="" method="POST">
