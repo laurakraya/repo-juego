@@ -1,6 +1,11 @@
-# ignore a file type
-*.sql
-
-#ignore specific files on root directory
-base.json
-basejuego.sql
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
