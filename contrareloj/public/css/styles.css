@@ -463,7 +463,30 @@ section {
 .counter {
   display: none;
 }
+.area-info{
+    margin: 10px;
+    border: 1px solid white;
+    width: 100%;
+    height: 400px;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 
+.ranking {
+  border: 1px solid white;
+  width: 30%;
+  height: 400px;
+  flex-direction: row;
+}
+.niveles{
+  border: 1px solid white;
+  width: 30%;
+  height: 400px;
+  flex-direction: row;
+}
 select {
   margin-left: 10px;
   /* -webkit-appearance: none; */
