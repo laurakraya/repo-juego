@@ -477,14 +477,15 @@ section {
 
 .ranking {
   border: 1px solid white;
-  width: 30%;
-  height: 40px;
+  height: 200px;
+  width: 50%;
+  margin-top: auto;
 
 }
 .niveles{
   border: 1px solid white;
-  width: 30%;
-  height: 40px;
+  height: 200px;
+  width: 50%;
 
 }
 select {
