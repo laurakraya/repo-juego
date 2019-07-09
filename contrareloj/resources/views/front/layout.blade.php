@@ -15,6 +15,7 @@
   {{-- @include('front.partials.footer') --}}
 
   @include('front.partials.scripts')
+  @yield('scripts')
 
 </body>
 
