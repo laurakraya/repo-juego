@@ -470,22 +470,22 @@ section {
     height: 400px;
     max-width: 800px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 20px;
+    flex-direction: row;
   }
 
 .ranking {
   border: 1px solid white;
   width: 30%;
-  height: 400px;
-  flex-direction: row;
+  height: 40px;
+
 }
 .niveles{
   border: 1px solid white;
   width: 30%;
-  height: 400px;
-  flex-direction: row;
+  height: 40px;
+
 }
 select {
   margin-left: 10px;
