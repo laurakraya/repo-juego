@@ -7,11 +7,21 @@
   {{csrf_field()}}
   <p class="form__group">
     <label class="form__group__text-label" for="imagen">URL de la Imagen</label>
-    <input class="form__group__text-field form-control" id="imagen" type="file" name="image" value="">
+    <input class="form__group__text-field form-control" id="image" type="file" name="image" value="">
   </p>
+
+
+
   <p class="form__group">
     <label class="form__group__text-label" for="fecha de Nacimiento">Fecha de Nacimiento</label>
     <input class="form__group__text-field form-control" id="birth_date"  type="text" name="birth_date" value="">
+  </p>
+  <p class="alert alert-danger" role="alert">
+    @if ($errors->has('birth_date'))
+        <span class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('birth_date') }}</strong>
+          </span>
+      @endif
   </p>
   <p class="form__group">
     <label class="form__group__text-label" for="name">Nombre</label>
@@ -24,7 +34,7 @@
       <i class="fas fa-sort-down"></i>
       @foreach($levels as $level)
       <option value="{{ $level->id }}">{{ $level->levels}}</option>
-      @endforeach 
+      @endforeach
     </select>
   </p>
   <p class="form__group">
