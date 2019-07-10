@@ -478,11 +478,7 @@ section {
   padding: 0;
   flex-direction: column;
 }
-.niveles{
-  border: 1px solid white;
-  min-height: initial;
-  padding: 0;
-}
+
 
 .table{
   display: flex;
@@ -501,6 +497,34 @@ section {
 
 .table__row__name{
   width: 100%;
+}
+.niveles{
+  border: 1px solid white;
+  min-height: initial;
+  padding: 0;
+  flex-direction:column;
+}
+
+.buttons__ranking{
+  width: 100%;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding: 5px;
+}
+.niveles__ranking {
+border-radius: 0.25rem;
+height: 40px;
+border-style: none;
+background-color: #440A7F;
+color: white;
+font-size: 1em;
+font-family: "Lato", sans-serif;
+padding: 5px;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 select {
   margin-left: 10px;
