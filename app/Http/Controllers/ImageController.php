@@ -19,11 +19,15 @@ class ImageController extends Controller
    $this->validate($req, [
            'image' => 'mimes:jpeg,jpg,png',
            'birth_date' => 'required|date_format:Y-m-d',
+           'name' => 'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:50'
          ],
          [
            'image.mimes' => 'El archivo elegido debe ser una imagen',
-           'birth_date.date_format' => 'El formato de fecha debe ser AÑO-MES-DIA',
-           'birth_date.required' => 'Debe incluir una fecha AÑO-MES-DIA'
+           'birth_date.date_format' => 'El formato de fecha debe ser 2019-01-01',
+           'birth_date.required' => 'Debe incluir una fecha 2019-01-01',
+           'name.required' => 'Debe completar el campo nombre',
+           'name.regex' => 'El nombre no debe contener numeros',
+           'name.max' => 'El maximo de caracteres es 50'
        ]
        );
 

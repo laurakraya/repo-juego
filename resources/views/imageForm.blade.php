@@ -27,6 +27,13 @@
     <label class="form__group__text-label" for="name">Nombre</label>
     <input class="form__group__text-field form-control" id="name" type="text" name="name" value="">
   </p>
+  <p class="alert alert-danger" role="alert">
+    @if ($errors->has('name'))
+        <span class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('name') }}</strong>
+          </span>
+      @endif
+  </p>
   <p class="form__group">
     <label class="form__group__text-label" for="level">Nivel de dificultad</label>
     {{-- <input id="level" type="number" name="levels_id" value=""> --}}
