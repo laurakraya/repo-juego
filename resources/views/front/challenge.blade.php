@@ -1,40 +1,48 @@
 @extends('front.layout')
 
 @section('content')
-<main class="content">
-  <div class="timer-container">
-    <div class="timer"></div>
-  </div>
-  <div class="area-juego">
+<main class="content game">
+  <h1 class="game-title">
+    @if ($lvlId == 1)
+      ¿Quién es más viejo?
+    @else
+      ¿Cuál se inventó primero?
+    @endif
+  </h1>
+  <div class="game-area">
+      <div class="timer-container">
+          <div class="timer"></div>
+        </div>
   <span class="lvl-id" style="display: none">{{$lvlId}}</span>
   <span class="current-url" style="display: none">{{url()->current()}}</span>
-    <div class="area-juego__display">
+    <div class="game-area__display">
       <form action="" method="POST">
         {{csrf_field()}}
         <input type="hidden" name="challenge_id" value="{{$challengeId}}">
         <input type="hidden" name="user_answer" value="1">
-        <button type="submit" class="area-juego__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img1->image}}')">
-          <span>A</span>
+        <button type="submit" class="game-area__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img1->image}}')">
+          <span></span>
         </button>
       </form>
       <form action="" method="POST">
         {{csrf_field()}}
         <input type="hidden" name="challenge_id" value="{{$challengeId}}">  
         <input type="hidden" name="user_answer" value="2">
-        <button type="submit" class="area-juego__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img2->image}}')">
-          <span>B</span>
+        <button type="submit" class="game-area__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img2->image}}')">
+          <span></span>
         </button>
       </form>
-      <p>Challenge número: {{$challengeNumber}}</p>
-      <p>Respuestas correctas: {{$correctAnswers}}</p>
-      <p>Puntaje: {{$userScore}}</p>
-      {{url('/challenge/hola/')}}
     </div>
-    <form action="" method="POST" class="timer-form">
+    <div class="game-area__info">
+        <p>Challenge número: <span>{{$challengeNumber}} / 10</span></p>
+        <p>Respuestas correctas: <span>{{$correctAnswers}} / 10</span></p>
+        <p>Puntaje de la partida: <span>{{$correctAnswers * 10}}</span></p>
+    </div>
+{{--     <form action="" method="POST" class="timer-form">
       {{csrf_field()}}
       <input type="hidden" name="challenge_id" value="{{$challengeId}}">  
-    </form>
-    <div class="area-juego__opciones">
+    </form> --}}
+    <div class="game-area__opciones">
     </div>
   </div>
 </main>
@@ -88,13 +96,49 @@ timer.on('circle-animation-end', function(e) {
 
   var timerForm = $('.timer-form');
 
+  let lvlId = document.querySelector('.lvl-id').innerHTML;
+  //Select token with getAttribute
+  let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');;
+  //Select input values with the data you want to send
+  let challengeId = document.querySelector('input[name="challenge_id"]').value;
+  //Define your post url
+  let url = "{{route('challenge.update', ['lvlId' => $lvlId])}}";
+  console.log(url);
+  //Define redirect if needed
+  let redirect = url;
+
   if(answered === false) {
-    timerForm.submit();
+    fetch(url, {
+          method: 'POST',
+          headers: {
+              "X-CSRF-TOKEN": token,
+              "Content-Type": "application/json"                
+          },
+          mode: 'same-origin',
+          body: JSON.stringify({
+              user_answer: null,
+              challenge_id: challengeId,
+              _token: token,
+              soyFetch: true
+          })
+      })
+      .then((response) => {
+        return response.json();
+        })
+      .then((data) => {
+        if(data.status === 'ok') {
+          window.location.href = redirect;
+        }
+      })  
+      .catch(function (error) {
+          console.log(error);
+      })
   }
+
   
 });
 
-$('.area-juego__display__img').on('click', function(e) {
+$('.game-area__display__img').on('click', function(e) {
 
   e.preventDefault();
 

@@ -75,7 +75,7 @@ class ChallengeController extends Controller
 
     public function update(Request $req, $lvlId = 1) 
     {
-        
+        //dd($req->all());
         $challenge = Challenge::find($req->challenge_id);
 
         $img1Id = $challenge->imageA_id;
@@ -106,7 +106,12 @@ class ChallengeController extends Controller
         $challenge -> user_answer = $userAnswer;
 
         $challenge->update();
-
+        
+        if ($req->input("soyFetch")) {
+            return response()->json([
+                "status" => "ok"
+            ]);
+        }
         return redirect()->action('ChallengeController@create', [$lvlId]);
     }
 

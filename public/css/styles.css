@@ -391,7 +391,12 @@ section {
 }
 /**CSS DE LAS PREGUNTAS**/
 
-.area-juego {
+.game-title {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.game-area {
   margin: 10px;
   border: 1px solid white;
   width: 100%;
@@ -402,7 +407,7 @@ section {
   padding: 20px;
 }
 
-.area-juego__display {
+.game-area__display {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -410,8 +415,8 @@ section {
   margin-bottom: 20px;
 }
 
-.area-juego__display__img {
-  border: 1px solid white;
+.game-area__display__img {
+  border: 2px solid #440A7F;
   width: 100px;
   height: 100px;
   position: relative;
@@ -421,7 +426,7 @@ section {
   background-repeat: no-repeat;
 }
 
-.area-juego__display__img span {
+.game-area__display__img span {
   position: absolute;
   bottom: -30px;
   left: 50%;
@@ -430,17 +435,17 @@ section {
   font-weight: 700;
 }
 
-.area-juego__opciones {
+.game-area__opciones {
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.area-juego__btn {
+.game-area__btn {
   margin-bottom: 20px;
   height: 30px;
-  border: 1px solid white;
+  border: 1px solid #440A7F;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -451,26 +456,38 @@ section {
   font-weight: 700;
 }
 
-.area-juego__btn:hover {
+.game-area__btn:hover {
   color: #440A7F;
   border: 1px solid #440A7F;
 }
 
-.area-juego__btn:last-child {
+.game-area__btn:last-child {
   margin-bottom: 0px;
+}
+
+.game-area__info > p {
+  color: #440A7F;
+}
+
+.game-area__info > p > span {
+  color: white;
 }
 
 .counter {
   display: none;
 }
 .area-info{
+  border: 1px solid white;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
 
-    border: 1px solid white;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
+.area-info section h1 {
+  margin: 20px 0px;
+  font-size: 2em;
+}
 
 .ranking {
   border: 1px solid white;
@@ -511,6 +528,7 @@ section {
   min-height: initial;
   padding: 0;
   flex-direction:column;
+  min-height: 100%;
 }
 
 .buttons__ranking{
@@ -570,11 +588,11 @@ input[type="file"] {
     width: 50vw;
     height: auto;
   }
-  .area-juego__display__img {
+  .game-area__display__img {
     width: 250px;
     height: 250px;
   }
-  .area-juego__display__img span {
+  .game-area__display__img span {
     position: absolute;
     bottom: -30px;
     left: 50%;
@@ -582,7 +600,7 @@ input[type="file"] {
     font-size: 20px;
     font-weight: 700;
   }
-  .area-juego__btn {
+  .game-area__btn {
     height: 40px;
     width: 40%;
   }
