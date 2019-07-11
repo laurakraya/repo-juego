@@ -26,7 +26,7 @@ Route::post("/profile", "UserController@store");
 
 Route::get('/challenge/{lvlId?}/', 'ChallengeController@create');
 
-Route::post('/challenge/{lvlId?}/', 'ChallengeController@update');
+Route::post('/challenge/{lvlId?}/', 'ChallengeController@update')->name('challenge.update');
 
 Auth::routes();
 
