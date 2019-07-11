@@ -14,7 +14,7 @@ class AddRoleToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role')->before('name')->default('10');
+            $table->integer('role')->after('updated_at')->default('10');
         });
     }
 

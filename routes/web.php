@@ -37,5 +37,8 @@ Route::post("/newImage", "ImageController@store")->middleware('auth')->middlewar
 Route::get('/ranking', 'RankingController@index');
 
 /* Route::get('/instalar', function(){
-    Artisan::call("storage:link");
-}); */
+    //Artisan::call("storage:link");
+	Artisan::call("migrate");
+	
+	retrun redirect('/');
+});*/
