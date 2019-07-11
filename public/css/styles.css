@@ -487,7 +487,7 @@ section {
 }
 .table__row{
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   width: 100%;
   justify-content: space-between;
 }
@@ -497,6 +497,10 @@ section {
 
 .table__row__name{
   width: 100%;
+}
+.data-user{
+  display: flex;
+  flex-direction:row;
 }
 .niveles{
   border: 1px solid white;

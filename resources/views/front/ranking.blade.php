@@ -7,10 +7,19 @@
       <h1>Ranking</h1>
       <div class="table">
         <div class="table__row">
-          <div class="table__row__pos"> 1</div>
-          <div class="table__row__name">ana</div>
-          <div class="table__row__puntos">1098765432345678900 </div>
+
+          @foreach($datosRanking as $datos)
+          <div class="data-user">
+          <div class="image-user">
+          <a class="image" href="/profile" style="background-image: url('@if ($datos->user_image == null){{asset('img/profile-placeholder.png')}} @else/storage/profile/{{$datos->user_image }}@endif')"></a>
+          </div>
+          <div class="table__row__pos">{{$posicion++}} </div>
+          <div class="table__row__name">{{$datos->name}}</div>
+          <div class="table__row__puntos"> {{$datos->score}}</div>
+          </div>
+          @endforeach
         </div>
+
       </div>
     </section>
     <section class="niveles">
