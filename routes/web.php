@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('front.index');
 });
 
-/* Route::get('/challenge', function() {
-    return view('front.challenge');
-}); */
-
 Route::get('/profile', function() {
     return view('front.profile');
 });
@@ -30,15 +26,11 @@ Route::post("/profile", "UserController@store");
 
 Route::get('/challenge/{lvlId?}/', 'ChallengeController@create');
 
-Route::post('/challenge', 'ChallengeController@update');
+Route::post('/challenge/{lvlId?}/', 'ChallengeController@update');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-/* Route::get('/newImage', function(){
-  return view("imageForm");
-}); */
 
 Route::get('/newImage', 'LevelController@index');
 

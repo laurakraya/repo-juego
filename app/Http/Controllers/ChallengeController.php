@@ -73,7 +73,7 @@ class ChallengeController extends Controller
         }
     }
 
-    public function update(Request $req) 
+    public function update(Request $req, $lvlId = 1) 
     {
         $challenge = Challenge::find($req->challenge_id);
 
@@ -106,7 +106,7 @@ class ChallengeController extends Controller
 
         $challenge->update();
 
-        return redirect()->action('ChallengeController@create');
+        return redirect()->action('ChallengeController@create', [$lvlId]);
     }
 
     

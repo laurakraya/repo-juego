@@ -36,9 +36,15 @@
         <label class="change-avatar__form__label" for="avatar">Cambiar avatar:</label>
         <div>
           <input class="change-avatar__form__input" type="file" id="user_image" class="form-control" name="user_image">
+
           <button class="change-avatar__form__btn" name="submit" type="submit">Subir</button>
         </div>
-        <div class="alert alert-danger" role="alert">No se pudo cargar la imagen
+        <div class="alert alert-danger" role="alert">
+          @if ($errors->has('user_image'))
+              <span class="alert alert-danger" role="alert">
+                    <strong>{{ $errors->first('user_image') }}</strong>
+                </span>
+            @endif
         </div>
       </form>
     </div>

@@ -5,6 +5,8 @@ namespace Contrareloj\Http\Controllers;
 use Contrareloj\Image;
 use Contrareloj\Level;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
@@ -13,8 +15,19 @@ class ImageController extends Controller
 
 
  public function store(Request $req){
-   $newImage = new Image();
 
+   $this->validate($req, [
+           'image' => 'mimes:jpeg,jpg,png',
+           'birth_date' => 'required|date_format:Y-m-d',
+         ],
+         [
+           'image.mimes' => 'El archivo elegido debe ser una imagen',
+           'birth_date.date_format' => 'El formato de fecha debe ser AÑO-MES-DIA',
+           'birth_date.required' => 'Debe incluir una fecha AÑO-MES-DIA'
+       ]
+       );
+
+   $newImage = new Image();
    $levels = Level::all();
 
    $lvlId = $req["levels_id"];
