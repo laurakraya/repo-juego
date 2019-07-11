@@ -495,9 +495,13 @@ section {
   margin: 10px;
 }
 
+.table__row__pos{
+  width: 100%;
+}
 .table__row__name{
   width: 100%;
 }
+
 .data-user{
   display: flex;
   flex-direction:row;
