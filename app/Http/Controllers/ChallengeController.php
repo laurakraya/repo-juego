@@ -42,7 +42,7 @@ class ChallengeController extends Controller
         $answeredCorrectly = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('correct_answer', '=', '1')->where('state', '=', '0');
         $answeredCorrectlyCount = $answeredCorrectly->count();
 
-        if($stateCeroCount == 10) {
+        if($stateCeroCount >= 10) {
 
             if($answeredCorrectlyCount >= 7) {
                 $user = User::find(Auth::user()->id);
@@ -75,6 +75,7 @@ class ChallengeController extends Controller
 
     public function update(Request $req, $lvlId = 1) 
     {
+        
         $challenge = Challenge::find($req->challenge_id);
 
         $img1Id = $challenge->imageA_id;
