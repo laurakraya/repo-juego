@@ -3,7 +3,9 @@
 <nav class="navibar">
   <a class="navibar__home-link" href="/"><i class="fas fa-home fa-2x"></i></a>
   <ul class="navibar__list">
-    <li class="navibar__list__item"><a class="navibar__list__item__link" href="/newImage">Carga de Imágenes</a></li>
+    @if (Auth::check() && Auth::user()->role > 10)
+      <li class="navibar__list__item"><a class="navibar__list__item__link" href="/newImage">Carga de Imágenes</a></li>    
+    @endif
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/">Inicio</a></li>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/#descripcion">El Juego</a></li>
     @guest

@@ -4,11 +4,9 @@ PROYECTO INTEGRADOR DIGITAL HOUSE
 
 -Habría que mejorar la estética
 
--Cambiar la ruta que lleva a newImage por get (que se maneje con el controlador de imagen y no el de nivel)
+-Armar el tutorial (último)
 
 -Terminar vista de Ranking (posiblemente cambiarla por 'game' y cambiar el RankingController por GameController?). En esta vista mostrar los puntos acumulados
-
--Permitirle al usuario resetear su puntaje
 
 -Aplicar distintos puntajes por nivel
 
@@ -18,5 +16,15 @@ PROYECTO INTEGRADOR DIGITAL HOUSE
 
 -Armar nivel de bonus
 
--Averiguar cómo hostear la web
+-Mostrar el link a la carga de imágenes sólo a los admins
+
+-Validar formularios por js
+
+-Cambiar msj de error en login y registro
+
+
+
+
+
+
 

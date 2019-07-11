@@ -30,9 +30,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/newImage', 'LevelController@index');
+Route::get('/newImage', 'ImageController@create')->middleware('auth')->middleware('role');
 
-Route::post("/newImage", "ImageController@store");
+Route::post("/newImage", "ImageController@store")->middleware('auth')->middleware('role');
 
 Route::get('/ranking', 'RankingController@index');
 

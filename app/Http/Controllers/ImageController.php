@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class ImageController extends Controller
 {
 
+  public function create()
+  {
+    $levels = Level::all();    
+    $vac = compact('levels');
+
+    return view('imageForm', $vac);
+    
+  }
 
 
 

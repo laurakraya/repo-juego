@@ -10,7 +10,7 @@
     <h1 class="profile__title"></h1>
     <div class="profile__info">
       <div class="profile__info__avatar">
-        <div class="profile__info__avatar__pic" style="background-image: url('@if (Auth::user()->user_image == null){{asset('img/profile-placeholder.png')}} @else /storage/profile/{{Auth::user()->user_image }}@endif')"></div>
+        <div class="profile__info__avatar__pic" style="background-image: url('@if (Auth::check() && (Auth::user()->user_image == null)){{asset('img/profile-placeholder.png')}} @else /storage/profile/{{Auth::user()->user_image }}@endif')"></div>
       </div>
       <div class="profile__info__data">
         <ul class="profile-data__list">
