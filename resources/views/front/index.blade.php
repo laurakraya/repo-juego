@@ -35,7 +35,7 @@
           <a class="btn descripcion__start-btn" href="/login"><span>¡Estoy listo!</span></a>
           <a class="btn descripcion__start-btn" href="/register"><span>¡Soy nuevo!</span></a>
         @else 
-          <a class="btn descripcion__start-btn" href="/challenge"><span>¡Estoy listo!</span></a>
+          <a class="btn descripcion__start-btn" href="/ranking"><span>¡Estoy listo!</span></a>
         @endguest
       </section>
 {{--       <section class="login-section" id="login">

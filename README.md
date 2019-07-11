@@ -2,10 +2,6 @@ PROYECTO INTEGRADOR DIGITAL HOUSE
 
 -En la vista de perfil, si es posible, agregar la opción de editar los datos del usuario.
 
--Validar la carga de Imagen (falta validar name y lvl id)
-
--Falta implementar ajax al terminarse el timer.
-
 -Habría que mejorar la estética
 
 -Cambiar la ruta que lleva a newImage por get (que se maneje con el controlador de imagen y no el de nivel)

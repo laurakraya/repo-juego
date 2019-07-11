@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::view('/', 'front.index')->name('index');
 
 Route::get('/profile', function() {
     return view('front.profile');
@@ -37,3 +35,7 @@ Route::get('/newImage', 'LevelController@index');
 Route::post("/newImage", "ImageController@store");
 
 Route::get('/ranking', 'RankingController@index');
+
+/* Route::get('/instalar', function(){
+    Artisan::call("storage:link");
+}); */

@@ -36,6 +36,17 @@ class ChallengeController extends Controller
 
         $challenge->save();
 
+        $img1Id = $challenge->imageA_id;
+        $img2Id = $challenge->imageB_id;
+
+        $image1Date = Image::find($img1Id)->birth_date;
+        $image2Date = Image::find($img2Id)->birth_date;
+
+        $date1 = Carbon::parse($image1Date);
+        $date2 = Carbon::parse($image2Date);
+
+        $correctAnswer = $date1->lt($date2);
+
         $stateCero = Challenge::all()->where('user_id', '=', Auth::user()->id)->where('state', '=', '0');
         $stateCeroCount = $stateCero->count();
 
@@ -67,7 +78,8 @@ class ChallengeController extends Controller
                 'challengeNumber' => $stateCeroCount,
                 'correctAnswers' => $answeredCorrectlyCount,
                 'userScore' => $userScore,
-                'lvlId' => $lvlId
+                'lvlId' => $lvlId,
+                'rightAnswer' => $correctAnswer
             ]);
 
         }
@@ -76,6 +88,7 @@ class ChallengeController extends Controller
     public function update(Request $req, $lvlId = 1) 
     {
         //dd($req->all());
+
         $challenge = Challenge::find($req->challenge_id);
 
         $img1Id = $challenge->imageA_id;
@@ -112,7 +125,8 @@ class ChallengeController extends Controller
                 "status" => "ok"
             ]);
         }
-        return redirect()->action('ChallengeController@create', [$lvlId]);
+        return redirect()->action('ChallengeController@create', ['lvlId' => $lvlId,
+        'answerWasRight' => $answerWasRight]);
     }
 
     
