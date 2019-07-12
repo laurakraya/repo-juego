@@ -37,5 +37,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-protected function validateLogin(Request $req){}
+protected function validateLogin(Request $req){
+
+
+
+    $this->validate($req, [
+
+            'email' => 'required|exists:users|max:50|unique:users',
+            'password' => 'required'
+          ],
+          [
+            'email.required' => 'El email no puede estar vacio',
+            'email.max' => 'El maximo de caracteres es 50',
+            'email.unique' => 'El email ya esta registrado',
+            'email.exists' => 'El email no se encuentra registrado',
+            'password.required' => 'La contraseña no puede estar vacia'
+        ]
+      );}
+
+
+
+
 }

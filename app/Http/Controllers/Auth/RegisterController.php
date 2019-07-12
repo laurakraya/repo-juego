@@ -49,19 +49,28 @@ class RegisterController extends Controller
      protected function validator(array $data)
      {
          $rules = [
-             'name' => ['required', 'string', 'max:80'],
-             'lastname' => ['required', 'string', 'max:80'],
+             'name' => ['required', 'string', 'max:80', 'alpha'],
+             'lastname' => ['required', 'string', 'max:80', 'alpha'],
              'email' => ['required', 'string', 'email', 'max:80', 'unique:users'],
              'password' => ['required', 'string', 'min:8', 'confirmed'],
          ];
 
          $messages = [
-           'required' => 'El :attribute es obligatorio.',
-           'string' => ':attribute debe ser una cadena de texto.',
-           'max' =>'El :attribute no debe superar :max',
-           'min' =>'El :attribute deber tener al menos :min caracteres.',
-           'confirmed' =>'Las :attribute no coinciden',
-           'unique' =>'El :attribute ya esta en uso',
+           'email.required' => 'El email no puede estar vacio',
+           'email.max' => 'El maximo de caracteres es 50',
+           'email.unique' => 'El email ya esta registrado',
+           'email.email' => 'El email ingresado no tiene formato valido',
+           'name.required' => 'El nombre no puede estar vacio',
+           'name.string' => 'El nombre no debe contener numeros',
+           'name.max' => 'El nombre excede el limite de caracteres',
+           'lastname.required' => 'El apellido no puede estar vacio',
+           'lastname.string' => 'El apellido no debe contener numeros',
+           'lastname.max' => 'El apellido excede el limite de caracteres',
+           'password.required' => 'Debe ingresar una contraseña',
+           'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+           'password.max' => 'La contraseña debe tener menos caracteres',
+           'name.alpha' => 'El nombre no puede contener numeros o acentos',
+           'lastname.alpha' => 'El apellido no debe contener numeros o acentos'
 
          ];
 
