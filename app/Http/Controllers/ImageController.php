@@ -13,11 +13,11 @@ class ImageController extends Controller
 
   public function create()
   {
-    $levels = Level::all();    
+    $levels = Level::all();
     $vac = compact('levels');
 
     return view('imageForm', $vac);
-    
+
   }
 
 
@@ -26,16 +26,19 @@ class ImageController extends Controller
 
    $this->validate($req, [
            'image' => 'mimes:jpeg,jpg,png',
-           'birth_date' => 'required|date_format:Y-m-d',
-           'name' => 'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:50'
+           'birth_date' => 'required||unique:images|date_format:Y-m-d',
+           'name' => 'required|unique:images|max:255'
+           //'name' => 'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:100'
          ],
          [
            'image.mimes' => 'El archivo elegido debe ser una imagen',
            'birth_date.date_format' => 'El formato de fecha debe ser 2019-01-01',
            'birth_date.required' => 'Debe incluir una fecha 2019-01-01',
            'name.required' => 'Debe completar el campo nombre',
-           'name.regex' => 'El nombre no debe contener numeros',
-           'name.max' => 'El maximo de caracteres es 50'
+           'name.unique'=> 'El nombre está repetido',
+           'name.max'=> 'El nombre debe tener como máximo 255 caracteres'
+           // 'name.regex' => 'El nombre no debe contener numeros',
+           // 'name.max' => 'El maximo de caracteres es 100'
        ]
        );
 

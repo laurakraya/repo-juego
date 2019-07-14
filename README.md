@@ -12,19 +12,7 @@ PROYECTO INTEGRADOR DIGITAL HOUSE
 
 -Prevenir que el usuario haga trampa pasando un número de nivel que no debería tener desbloqueado por parámetro
 
--Cargar imágenes de nivel 3 y cargar mayor cantidad de todos los niveles para el demo
 
 -Armar nivel de bonus
 
--Mostrar el link a la carga de imágenes sólo a los admins
-
 -Validar formularios por js
-
--Cambiar msj de error en login y registro
-
-
-
-
-
-
-

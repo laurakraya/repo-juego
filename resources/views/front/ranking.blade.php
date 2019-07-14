@@ -19,16 +19,18 @@
           </div>
           @endforeach
         </div>
-
       </div>
     </section>
     <section class="niveles">
       <h1>Volver a Jugar</h1>
       <div class="buttons__ranking">
-        <a class="niveles__ranking" href="/challenge/1"><span>Nivel 1</span></a>
-        <a class="niveles__ranking" href="/challenge/2"><span>Nivel 2</span></a>
-        <a class="niveles__ranking" href="/challenge/3"><span>Nivel 3</span></a>
+        @foreach($levels as $level)
+        <a class="niveles__ranking" href="/challenge/{{$nivel->id}}"><span>/{{$level->levels}}</span></a>
+        @endforeach
       </div>
+    </section>
+    <section class="user__score">
+      <span>"Hola "{{$usuarioLogueado->name}} . "tu puntaje es de " . {{$usuarioLogueado->score}}</span>
     </section>
   </div >
 </main>
