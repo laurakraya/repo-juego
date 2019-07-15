@@ -1,0 +1,87 @@
+.area-info {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 40px; }
+
+.area-info section h1 {
+  margin: 20px 0px;
+  font-size: 2em; }
+
+.results {
+  padding: 60px 10px; }
+
+.results-section {
+  min-height: initial;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 40px; }
+  @media (min-width: 992px) {
+    .results-section {
+      width: 80%;
+      margin: 0 auto; } }
+  .results-section__title {
+    text-align: center;
+    text-transform: uppercase; }
+
+.ranking__table__row {
+  display: grid;
+  grid-template-rows: 40px;
+  grid-template-columns: 40px 1fr 10fr 2fr;
+  grid-gap: 5px;
+  padding: 0px 10px; }
+  .ranking__table__row:nth-child(odd) {
+    background-color: #440A7F; }
+  .ranking__table__row div {
+    display: flex;
+    align-items: center; }
+    .ranking__table__row div:nth-child(odd) {
+      background-color: transparent; }
+  .ranking__table__row--centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .ranking__table__row__avatar__img {
+    border-radius: 50%;
+    height: 80%;
+    width: 80%; }
+  .ranking__table__row__name {
+    text-transform: capitalize; }
+  .ranking__table__row__puntos {
+    display: flex;
+    justify-content: flex-end; }
+
+.niveles__btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 10px; }
+  .niveles__btns div {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .niveles__btns__btn {
+    background-color: #440A7F;
+    color: white;
+    width: 80%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center; }
+    .niveles__btns__btn--disabled {
+      opacity: 0.5; }
+      .niveles__btns__btn--disabled:hover {
+        cursor: initial; }
+
+.user-score {
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+  margin-bottom: 40px; }
+  .user-score--bold {
+    text-transform: capitalize;
+    color: #440A7F;
+    font-weight: 700; }
+
+/*# sourceMappingURL=ranking.css.map */

@@ -196,7 +196,7 @@ body {
   min-height: 100vh;
 }
 
-section {
+.section-flex {
   min-height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
@@ -475,82 +475,6 @@ section {
 
 .counter {
   display: none;
-}
-.area-info{
-  border: 1px solid white;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.area-info section h1 {
-  margin: 20px 0px;
-  font-size: 2em;
-}
-
-.ranking {
-  border: 1px solid white;
-  min-height: initial;
-  padding: 0;
-  flex-direction: column;
-}
-
-
-.table{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.table__row{
-  display:flex;
-  flex-direction:column;
-  width: 100%;
-  justify-content: space-between;
-}
-.table__row  > div{
-  margin: 10px;
-}
-
-.table__row__pos{
-  width: 100%;
-}
-.table__row__name{
-  width: 100%;
-}
-
-.data-user{
-  display: flex;
-  flex-direction:row;
-}
-.niveles{
-  border: 1px solid white;
-  min-height: initial;
-  padding: 0;
-  flex-direction:column;
-  min-height: 100%;
-}
-
-.buttons__ranking{
-  width: 100%;
-  display:flex;
-  flex-direction:row;
-  justify-content: space-between;
-  padding: 5px;
-}
-.niveles__ranking {
-border-radius: 0.25rem;
-height: 40px;
-border-style: none;
-background-color: #440A7F;
-color: white;
-font-size: 1em;
-font-family: "Lato", sans-serif;
-padding: 5px;
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center;
 }
 select {
   margin-left: 10px;

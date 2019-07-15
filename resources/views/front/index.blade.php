@@ -2,11 +2,12 @@
 
 @section('content')
 <main class="content" id="home">
-  <section class="presentacion">
+  <section class="section-flex presentacion">
     <h1 class="presentacion__title"> <img class="contrareloj" src="img/logo-blanco.png" alt="contrareloj"></h1>
 
     <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
   </section>
+<<<<<<< HEAD
 
   <section class="descripcion" id="descripcion">
     <div class="carousel-container">
@@ -42,6 +43,32 @@
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
 </div>
+=======
+  
+  <section class="section-flex descripcion" id="descripcion">
+    <div class="descripcion__text">
+      <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
+        a
+        libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
+        neque,
+        pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue.
+        Aenean
+        facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
+        pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in,
+        pellentesque
+        sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
+        <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
+          a
+          libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
+          neque,
+          pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue.
+          Aenean
+          facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
+          pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in,
+          pellentesque
+          sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
+        </div>
+>>>>>>> 025316764d467a9bb22694dd2c5e02a75fd4c465
         @guest
           <a class="btn descripcion__start-btn" href="/login"><span>¡Estoy listo!</span></a>
           <a class="btn descripcion__start-btn" href="/register"><span>¡Soy nuevo!</span></a>

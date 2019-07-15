@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  @yield('metatags')
   @include('front.partials.head')
+  @yield('metatags')
 </head>
 
 <body>

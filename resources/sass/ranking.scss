@@ -1,0 +1,162 @@
+$breakpoints: (
+  xs: 475px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1800px
+);
+
+@mixin media-breakpoint-down($bp) {
+  @media (max-width: (map-get($breakpoints, $bp) - 1)) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($bp) {
+  @media (min-width: map-get($breakpoints, $bp)) {
+      @content;
+  }
+}
+
+@mixin media-breakpoint-between($min, $max) {
+  @media (min-width: map-get($breakpoints, $min)) and (max-width: (map-get($breakpoints, $max) - 1)) {
+      @content;
+  }
+}
+
+.area-info{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.area-info section h1 {
+  margin: 20px 0px;
+  font-size: 2em;
+}
+
+.results {
+  padding: 60px 10px;
+}
+
+.results-section {
+  min-height: initial;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 40px;
+
+  @include media-breakpoint-up(lg) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.ranking {
+
+  &__table {
+
+    &__row {
+      display: grid;
+      grid-template-rows: 40px;
+      grid-template-columns: 40px 1fr 10fr 2fr;
+      grid-gap: 5px;
+      padding: 0px 10px;
+
+      &:nth-child(odd) {
+        background-color: #440A7F;
+      }
+
+      & div {
+        display: flex;
+        align-items: center;
+
+        &:nth-child(odd) {
+          background-color: transparent;
+        }
+      }
+
+      &--centered-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__avatar {
+
+        &__img {
+          border-radius: 50%;
+          height: 80%;
+          width: 80%;
+        }
+      }
+
+      &__name {
+        text-transform: capitalize;
+      }
+
+      &__puntos {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+.niveles {
+
+  &__btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+
+    & div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__btn {
+      background-color: #440A7F;
+      color: white;
+      width: 80%;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-align: center;
+
+      &--disabled {
+        opacity: 0.5;
+        
+        &:hover {
+          cursor: initial;
+        }
+      }
+    }
+  }
+}
+
+.user-score {
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+  margin-bottom: 40px;
+
+  &--bold {
+    text-transform: capitalize;
+    color: #440A7F;
+    font-weight: 700;
+  }
+}
+
+
+
