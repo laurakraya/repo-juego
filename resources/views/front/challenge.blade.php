@@ -34,9 +34,9 @@
       </form>
     </div>
     <div class="game-area__info">
-        <p>Challenge número: <span>{{$challengeNumber}} / 10</span></p>
-        <p>Respuestas correctas: <span>{{$correctAnswers}} / 10</span></p>
-        <p>Puntaje de la partida: <span>{{$correctAnswers * 10}}</span></p>
+        <p>Desafío: <br><span>{{$challengeNumber}}</span></p>
+        <p>Correctas: <br><span>{{$correctAnswers}}</span></p>
+        <p>Puntaje: <br><span>{{$correctAnswers * 10}}</span></p>
     </div>
 {{--     <form action="" method="POST" class="timer-form">
       {{csrf_field()}}
