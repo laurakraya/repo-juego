@@ -26,7 +26,7 @@
       </form>
       <form action="" method="POST">
         {{csrf_field()}}
-        <input type="hidden" name="challenge_id" value="{{$challengeId}}">  
+        <input type="hidden" name="challenge_id" value="{{$challengeId}}">
         <input type="hidden" name="user_answer" value="2">
         <button type="submit" class="game-area__display__img" style="background-image: url('/storage/levels/level{{$lvlId}}/{{$img2->image}}')">
           <span></span>
@@ -38,9 +38,11 @@
         <p>Correctas: <br><span>{{$correctAnswers}}</span></p>
         <p>Puntaje: <br><span>{{$correctAnswers * 10}}</span></p>
     </div>
+
+
 {{--     <form action="" method="POST" class="timer-form">
       {{csrf_field()}}
-      <input type="hidden" name="challenge_id" value="{{$challengeId}}">  
+      <input type="hidden" name="challenge_id" value="{{$challengeId}}">
     </form> --}}
     <div class="game-area__opciones">
     </div>
