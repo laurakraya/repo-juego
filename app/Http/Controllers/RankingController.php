@@ -2,7 +2,6 @@
 
 namespace Contrareloj\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Contrareloj\User;
 use Contrareloj\Level;
 use Auth;
@@ -19,7 +18,7 @@ class rankingController extends Controller
       $posicion=1;
       $niveles  = Level::all();
       $usuarioLogueado = Auth::user();
-      $vac = compact('datosRanking','posicion','niveles');
+      $vac = compact('datosRanking','posicion','niveles', 'usuarioLogueado');
 
       return view("front.ranking", $vac);
 
