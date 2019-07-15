@@ -7,43 +7,6 @@
 
     <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
   </section>
-<<<<<<< HEAD
-
-  <section class="descripcion" id="descripcion">
-    <div class="carousel-container">
-
-  <!-- Imagenes tutorial -->
-  <div class="tutorial-carousel fade">
-
-    <img class="img-carousel" src="{{asset('/img/1.1.jpg')}}" style="width:100%">
-
-  </div>
-
-  <div class="tutorial-carousel fade">
-
-    <img class="img-carousel" src="{{asset('/img/1.2.jpg')}}" style="width:100%">
-
-  </div>
-
-  <div class="tutorial-carousel fade">
-
-    <img class="img-carousel" src="{{asset('/img/1.3.jpg')}}" style="width:100%">
-
-  </div>
-
-  <!-- boton siguiente y anterior  -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<br>
-
-{{-- los puntos y slide --}}
-<div >
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
-=======
   
   <section class="section-flex descripcion" id="descripcion">
     <div class="descripcion__text">
@@ -68,7 +31,6 @@
           pellentesque
           sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
         </div>
->>>>>>> 025316764d467a9bb22694dd2c5e02a75fd4c465
         @guest
           <a class="btn descripcion__start-btn" href="/login"><span>¡Estoy listo!</span></a>
           <a class="btn descripcion__start-btn" href="/register"><span>¡Soy nuevo!</span></a>
