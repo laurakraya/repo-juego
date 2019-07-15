@@ -70,7 +70,8 @@ class RegisterController extends Controller
            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
            'password.max' => 'La contraseña debe tener menos caracteres',
            'name.alpha' => 'El nombre no puede contener numeros o acentos',
-           'lastname.alpha' => 'El apellido no debe contener numeros o acentos'
+           'lastname.alpha' => 'El apellido no debe contener numeros o acentos',
+           'password.confirmed' => 'Las contraseñas no coinciden'
 
          ];
 
