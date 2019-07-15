@@ -23,21 +23,21 @@ var repiteContraseña_ok = document.getElementById("ok_password-confirm");
 
 // -------------- AGREGANDO TODOS LOS EVENT LISTENER ------------------
 
-nombre.addEventListener("blur", nombreVerify, true)
-apellido.addEventListener("blur", apellidoVerify, true)
-email.addEventListener("blur", emailVerify, true)
-contraseña.addEventListener("blur", contraseñaVerify, true)
-repiteContraseña.addEventListener("blur", repiteContraseñaVerify, true)
+var nombre_campo = nombre.addEventListener("blur", nombreVerify, true)
+var apellido_campo = apellido.addEventListener("blur", apellidoVerify, true)
+var email_campo = email.addEventListener("blur", emailVerify, true)
+var contraseña_campo = contraseña.addEventListener("blur", contraseñaVerify, true)
+var repiteContraseña_campo = repiteContraseña.addEventListener("blur", repiteContraseñaVerify, true)
 
 
  // ------------------ FUNCIONES VERIFY ----------------------
 
 function nombreVerify() {
 
-  if (nombre.value == "") {
+  if (nombre.value.charAt(0) == "") {
     nombre.style.border = "2px solid red";
     nombre_ok.innerHTML = ""
-    nombre_error.innerHTML = "<span>El nombre no puede estar vacio</span>";
+    nombre_error.innerHTML = "<span>El nombre no puede estar vacio o contener espacios en blanco al comienzo</span>";
 
   } else if ((nombre.value.match(/[0-9]/i)) && (nombre.value != "")){
   nombre.style.border = "2px solid red";
@@ -54,10 +54,10 @@ function nombreVerify() {
 
 function apellidoVerify() {
 
-  if (apellido.value == "") {
+  if (apellido.value.charAt(0) == "") {
     apellido.style.border = "2px solid red";
     apellido_ok.innerHTML = ""
-    apellido_error.innerHTML = "<span>El apellido no puede estar vacio</span>";
+    apellido_error.innerHTML = "<span>El apellido no puede estar vacio o contener espacios en blanco al comienzo</span>";
 
   } else if ((apellido.value.match(/[0-9]/i)) && (apellido.value != "")){
   apellido.style.border = "2px solid red";
@@ -76,10 +76,10 @@ function emailVerify() {
 
 var regex = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 
-  if (email.value === "") {
+if (email.value.charAt(0) == "") {
     email.style.border = "2px solid red";
     email_ok.innerHTML = ""
-    email_error.innerHTML = "<span>El email no puede estar vacio</span>";
+    email_error.innerHTML = "<span>El email no puede estar vacio o contener espacios en blanco al comienzo</span>";
 
   } else if (!regex.test(email.value)) {
     email.style.border = "2px solid red";
@@ -139,10 +139,11 @@ function repiteContraseñaVerify() {
 
 // ---------------- HACER QUE EL BOTON SUBMIT SOLO FUNCIONE SI ESTA TODO OK ------------------
 
+
 // var boton = document.getElementById('submit_button');
 //
 //     boton.addEventListener('click', function(e) {
-//     if ((nombre_ok != "") || (apellido_ok != "") || (email_ok != "") || (contraseña_ok != "") || (repiteContraseña_ok != "")) {
+//     if () {
 //     e.preventDefault();
 //   }
 // })
