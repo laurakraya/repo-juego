@@ -9,28 +9,38 @@
   </section>
   
   <section class="section-flex descripcion" id="descripcion">
-    <div class="descripcion__text">
-      <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
-        a
-        libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
-        neque,
-        pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue.
-        Aenean
-        facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
-        pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in,
-        pellentesque
-        sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
-        <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
-          a
-          libero semper lacinia. Curabitur congue massa nisi, et tincidunt libero vulputate a. Vestibulum in cursus
-          neque,
-          pulvinar cursus nibh. Quisque vitae ex porta nisi posuere aliquet. Duis blandit auctor tortor eu congue.
-          Aenean
-          facilisis varius tincidunt. Curabitur semper mollis volutpat. Integer erat elit, suscipit et ultrices cursus,
-          pulvinar sit amet nibh. Fusce facilisis non est eu aliquam. Nunc ligula libero, sodales eu est in,
-          pellentesque
-          sodales arcu. Curabitur cursus ullamcorper odio et lacinia.</p>
-        </div>
+      <div class="carousel-container">
+          <!-- Imagenes tutorial -->
+          <div class="tutorial-carousel fade">
+         
+            <img class="img-carousel" src="{{asset('/img/1.1.jpg')}}" style="width:100%">
+         
+          </div>
+         
+          <div class="tutorial-carousel fade">
+         
+            <img class="img-carousel" src="{{asset('/img/1.2.jpg')}}" style="width:100%">
+         
+          </div>
+         
+          <div class="tutorial-carousel fade">
+         
+            <img class="img-carousel" src="{{asset('/img/1.3.jpg')}}" style="width:100%">
+         
+          </div>
+         
+          <!-- boton siguiente y anterior  -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+         </div>
+         <br>
+         
+         {{-- los puntos y slide --}}
+         <div >
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+         </div>
         @guest
           <a class="btn descripcion__start-btn" href="/login"><span>¡Estoy listo!</span></a>
           <a class="btn descripcion__start-btn" href="/register"><span>¡Soy nuevo!</span></a>
