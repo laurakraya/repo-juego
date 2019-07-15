@@ -1,37 +1,50 @@
 @extends('front.layout')
 
-@section('content')
-<main class="content">
-  <div class="area-info">
-    <section class="ranking">
-      <h1>Ranking</h1>
-      <div class="table">
-        <div class="table__row">
+@section('metatags')
+<link rel="stylesheet" href="{{asset('css/ranking.css')}}">
+@endsection
 
-          @foreach($datosRanking as $datos)
-          <div class="data-user">
-          <div class="image-user">
-          <a class="image" href="/profile" style="background-image: url('@if ($datos->user_image == null){{asset('img/profile-placeholder.png')}} @else/storage/profile/{{$datos->user_image }}@endif')"></a>
-          </div>
-          <div class="table__row__pos">{{$posicion++}} </div>
-          <div class="table__row__name">{{$datos->name}}</div>
-          <div class="table__row__puntos"> {{$datos->score}}</div>
-          </div>
-          @endforeach
-        </div>
-      </div>
+@section('content')
+<main class="results">
+  <div class="area-info">
+    <section class="results-section user-score">
+      <p>Hola <span class="user-score--bold">{{$usuarioLogueado->name}}</span> !</p>
+      <p>Tu puntaje es: <span class="user-score--bold">{{$usuarioLogueado->score}}</span></p>
     </section>
-    <section class="niveles">
-      <h1>Volver a Jugar</h1>
-      <div class="buttons__ranking">
-        @foreach($niveles as $nivel)
-      <a class="niveles__ranking" href="/challenge/{{$nivel->id}}"><span>Nivel: {{$nivel->id}}</span></a>
+    <section class="results-section ranking">
+      <h1 class="results-section__title">Ranking</h1>
+      <div class="ranking__table">
+        @foreach($datosRanking as $datos)
+        <div class="ranking__table__row">
+          <div class="ranking__table__row__avatar">
+            <div class="ranking__table__row__avatar__img" style="background-image: url('@if ($datos->user_image == null){{asset('img/profile-placeholder.png')}} @else/storage/profile/{{$datos->user_image }}@endif')"></div>
+          </div>
+          <div class="ranking__table__row__pos">{{$posicion++}} </div>
+          <div class="ranking__table__row__name">{{$datos->name}}</div>
+          <div class="ranking__table__row__puntos"> {{$datos->score}}</div>
+        </div>
         @endforeach
       </div>
     </section>
-    <section class="user__score">
-      <span>Hola {{$usuarioLogueado->name}} tu puntaje es de {{$usuarioLogueado->score}}</span>
-    </section>
-  </div >
-</main>
-@endsection
+    <section class="results-section niveles">
+      <h1 class="results-section__title">Volver a Jugar</h1>
+      <div class="niveles__btns">
+        @foreach($niveles as $nivel)
+        <div>
+          <a class="niveles__btns__btn @if (Auth::user()->score < 300) 
+            @if($nivel->id > 1) niveles__btns__btn--disabled @endif  
+            @elseif (Auth::user()->score < 600)
+            @if($nivel->id > 2) niveles__btns__btn--disabled @endif 
+            @endif" href="/challenge/{{$nivel->id}}"><span>Nivel: {{$nivel->id}}</span>
+          </a>
+          </div>
+          @endforeach
+        </div>
+      </section>
+    </div >
+  </main>
+  @endsection
+
+  @section('scripts')
+    <script src="{{asset('js/results.js')}}"></script>
+  @endsection

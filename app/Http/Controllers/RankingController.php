@@ -14,7 +14,7 @@ class rankingController extends Controller
     public function index(){
 
       $datosRanking = User::orderBy('score', 'desc')
-      ->paginate(3);
+      ->paginate(10);
       $posicion=1;
       $niveles  = Level::all();
       $usuarioLogueado = Auth::user();

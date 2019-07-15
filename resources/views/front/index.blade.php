@@ -2,13 +2,13 @@
 
 @section('content')
 <main class="content" id="home">
-  <section class="presentacion">
+  <section class="section-flex presentacion">
     <h1 class="presentacion__title"> <img class="contrareloj" src="img/logo-blanco.png" alt="contrareloj"></h1>
     
     <a href="#descripcion" class="presentacion__arrow-down grow point"><i class="fas fa-chevron-circle-down fa-4x"></i></a>
   </section>
   
-  <section class="descripcion" id="descripcion">
+  <section class="section-flex descripcion" id="descripcion">
     <div class="descripcion__text">
       <p class="descripcion__text__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras viverra velit
         a
