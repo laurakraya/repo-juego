@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<main>
-  <section class="profile">
+<main style="overflow-x: hidden">
+  <section class="section-flex profile">
     <h1 class="profile__title"></h1>
     <div class="profile__info">
       <div class="profile__info__avatar">
@@ -24,7 +24,7 @@
           </li>
           <li class="profile-data__list__item">
             <span class="profile-data__list__item__label">Mail:</span>
-            <span class="profile-data__list__item__data">{{ Auth::user()->email }}</span>
+            <span class="profile-data__list__item__data profile-data__list__item__data--lowercase">{{ Auth::user()->email }}</span>
           </li>
         </ul>
       </div>

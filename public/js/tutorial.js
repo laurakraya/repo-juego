@@ -1,28 +1,22 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+$('.carousel-container').slick({
+  arrows: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  mobileFirst: true,
+  infinite: true,
+  dots: true,
+  autoplay: true,
+  autoplaySpeed: 6000,
+  adaptiveHeight: false,
+  responsive: [
+    {
+      breakpoint: 991,
+      settings: {
+        arrows: true,
+        prevArrow: '<a href="" class="carousel-arrow carousel-arrow--prev"></a>',
+        nextArrow: '<a href="" class="carousel-arrow carousel-arrow--next"></a>'
+      }
+    }
+  ]
+});
 
-// siguiente - anterior
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("tutorial-carousel fade");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}

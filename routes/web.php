@@ -18,7 +18,7 @@ Route::view('/', 'front.index')->name('index');
 
 Route::get('/profile', function() {
     return view('front.profile');
-});
+})->middleware('auth');
 
 Route::post("/profile", "UserController@store");
 
@@ -34,7 +34,7 @@ Route::get('/newImage', 'ImageController@create')->middleware('auth')->middlewar
 
 Route::post("/newImage", "ImageController@store")->middleware('auth')->middleware('role');
 
-Route::get('/ranking', 'RankingController@index');
+Route::get('/ranking', 'RankingController@index')->middleware('auth');
 
 /* Route::get('/instalar', function(){
     //Artisan::call("storage:link");

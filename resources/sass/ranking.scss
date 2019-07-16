@@ -31,7 +31,11 @@ $breakpoints: (
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 25px;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 40px;
+  }
 }
 
 .area-info section h1 {

@@ -233,8 +233,7 @@ body {
     opacity: 0;
     transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
 }
-
-.navibar__user__options.active {
+.navibar__user__options--active {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.5s ease-in-out, visibility 0s linear 0s;
@@ -355,7 +354,7 @@ body {
 }
 
 .descripcion__start-btn {
-    margin-top: 40px;
+   /*  margin-top: 40px; */
     width: 100%;
     transition: opacity 0.3s ease-in-out, visibility 0s linear 0.5s;
     opacity: 1;
@@ -518,7 +517,7 @@ body {
 /**CSS DE LAS PREGUNTAS**/
 
 .game-title {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -645,11 +644,11 @@ input[type="file"] {
 /* carousel tutorial */
 
 .carousel-container {
-  max-width: 60%;
-
   position: relative;
   margin: auto;
   border-radius: 0.25rem;
+  width: 80%;
+  max-width: 300px;
 }
 
 /* Esconder imagenes default */
@@ -664,32 +663,31 @@ border-radius: 40px;
 border: 3px solid #440a7f;
 }
 /* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+
+.carousel-arrow {
+    position: absolute;
+    top: 45%;
+    /* transform: translate(0%, -50%); */
+    width: 21px;
+    height: 36px;
+    z-index: 2;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+.carousel-arrow:hover {
+    opacity: 0.8;
 }
-
-
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.carousel-arrow--prev {
+    background-image: url('../img/arrow-right.svg');
+    left: -50px;
+    width: 25px;
+    transform: rotate(180deg);
 }
-
+.carousel-arrow--next {
+    background-image: url('../img/arrow-right.svg');
+    right: -50px;
+} 
 
 .text {
   color: #f2f2f2;
@@ -711,20 +709,30 @@ border: 3px solid #440a7f;
 }
 
 /* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 1s ease;
+.slick-dots {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 1rem 0;
+	list-style-type: none;	
+}
+.slick-dots li {
+    margin: 0 0.25rem;
+}
+.slick-dots button {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    border: 1px solid #4407af;
+    border-radius: 100%;
+    text-indent: -9999px;
+    background-color: white;
+}
+.slick-dots li.slick-active button {
+    background-color: #4407af;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
-}
 
 
 .fade {
@@ -800,6 +808,13 @@ border: 3px solid #440a7f;
 
     .game-area__display {
         width: 80%;
+    }
+    .game-title {
+        font-size: 3em;
+    }
+
+    .carousel-container {
+        max-width: 300px;
     }
 }  
 

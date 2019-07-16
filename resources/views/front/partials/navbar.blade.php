@@ -7,7 +7,7 @@
       <li class="navibar__list__item"><a class="navibar__list__item__link" href="/newImage">Carga de Imágenes</a></li>    
     @endif
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/">Inicio</a></li>
-    <li class="navibar__list__item"><a class="navibar__list__item__link" href="/#descripcion">El Juego</a></li>
+    <li class="navibar__list__item"><a class="navibar__list__item__link" href="/#descripcion">Tutorial</a></li>
     @guest
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/login">Login</a></li>
     <li class="navibar__list__item"><a class="navibar__list__item__link" href="/register">Registro</a></li>

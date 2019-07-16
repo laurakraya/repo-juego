@@ -62,6 +62,14 @@
   margin-right: 5px;
 }
 
+.profile-data__list__item__data {
+  text-transform: capitalize;
+}
+
+.profile-data__list__item__data--lowercase {
+  text-transform: initial;
+}
+
 .change-avatar__form {
   display: flex;
   flex-direction: column;
@@ -69,7 +77,7 @@
 
 .change-avatar__form__label {
   color: #440A7F;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-weight: 700;
   font-size: 16px;
 }
@@ -79,6 +87,11 @@
   padding: 5px;
   color: #440A7F;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+input[type="file"].change-avatar__form__input {
+  margin-top: 10px;
 }
 
 .change-avatar__form__btn {
@@ -89,6 +102,7 @@
   color: white;
   border-radius: 0.25rem;
   height: 34px;
+  margin-top: 10px;
 }
 
 @media (min-width: 768px) {
