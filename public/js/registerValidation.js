@@ -44,11 +44,7 @@ function nombreVerify() {
   nombre_ok.innerHTML = ""
   nombre_error.innerHTML = "<span>El nombre no puede contener numeros o acentos</span>";
    }
-   else if (nombre.value.isEmpty()){
-   nombre.style.border = "2px solid #ffb84d";
-   nombre_ok.innerHTML = ""
-   nombre_error.innerHTML = "<span>El nombre no puede estar vacio</span>";
-    }
+  
        else {
        nombre.style.border = "2px solid lime";
        nombre_ok.style.color = "lime";
@@ -69,11 +65,7 @@ function apellidoVerify() {
   apellido_ok.innerHTML = ""
   apellido_error.innerHTML = "<span>El apellido no puede contener numeros o acentos</span>";
    }
-   else if (apellido.value.isEmpty()){
-   apellido.style.border = "2px solid #ffb84d";
-   apellido_ok.innerHTML = ""
-   apellido_error.innerHTML = "<span>El apellido no puede estar vacio</span>";
-    }
+
        else {
        apellido.style.border = "2px solid lime";
        apellido_ok.innerHTML = "&#10004";
@@ -91,11 +83,7 @@ if (email.value.startsWith(" ")) {
     email_ok.innerHTML = ""
     email_error.innerHTML = "<span>El email no puede contener espacios en blanco al comienzo</span>";
 
-  } else if (email.value.isEmpty()){
-  email.style.border = "2px solid #ffb84d";
-  email_ok.innerHTML = ""
-  email_error.innerHTML = "<span>El email no puede estar vacio</span>";
-   }
+  }
 
    else if (!regex.test(email.value)) {
     email.style.border = "2px solid #ffb84d";
