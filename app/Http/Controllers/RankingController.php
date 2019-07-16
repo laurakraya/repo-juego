@@ -24,7 +24,7 @@ class rankingController extends Controller
 
     }
 
-    public function levels(){
+/*     public function levels(){
       $levels  = Level::all();
       $userScore =  Auth::user()->score;
 
@@ -41,5 +41,5 @@ class rankingController extends Controller
         $vac = compact('$levelID1');
         return view("front.ranking",$vac);
       }
-    }
+    } */
 }

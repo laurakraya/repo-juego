@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="content">
-    <section class="login-section" id="login">
+    <section class="section-flex login-section" id="login">
     
             
             <form class="form" method="POST" action="{{ route('login') }}">
@@ -35,7 +35,7 @@
                     
                 </div>
                 
-                <div class="form__group">
+{{--                 <div class="form__group">
                     <div class="col-md-6 offset-md-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -45,7 +45,7 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 
    
                   

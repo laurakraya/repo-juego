@@ -22,7 +22,7 @@ Route::get('/profile', function() {
 
 Route::post("/profile", "UserController@store");
 
-Route::get('/challenge/{lvlId?}/', 'ChallengeController@create');
+Route::get('/challenge/{lvlId?}/', 'ChallengeController@create')->middleware('auth')->middleware('lvl-auth');
 
 Route::post('/challenge/{lvlId?}/', 'ChallengeController@update')->name('challenge.update');
 
