@@ -358,6 +358,7 @@ body {
     width: 100%;
     transition: opacity 0.3s ease-in-out, visibility 0s linear 0.5s;
     opacity: 1;
+    margin-bottom: 20px;
 }
 
 .descripcion__start-btn:hover {
