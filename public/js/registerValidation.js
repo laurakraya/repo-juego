@@ -34,10 +34,10 @@ var repiteContraseña_campo = repiteContraseña.addEventListener("blur", repiteC
 
 function nombreVerify() {
 
-  if (nombre.value.charAt(0) == "") {
+  if (nombre.value.startsWith(" ")) {
     nombre.style.border = "2px solid #ffb84d";
     nombre_ok.innerHTML = ""
-    nombre_error.innerHTML = "<span>El nombre no puede estar vacio o contener espacios en blanco al comienzo</span>";
+    nombre_error.innerHTML = "<span>El nombre no puede contener espacios en blanco al comienzo</span>";
 
   } else if ((nombre.value.match(/[0-9]/i)) && (nombre.value != "")){
   nombre.style.border = "2px solid #ffb84d";
@@ -54,10 +54,10 @@ function nombreVerify() {
 
 function apellidoVerify() {
 
-  if (apellido.value.charAt(0) == "") {
+  if (apellido.value.startsWith(" ")) {
     apellido.style.border = "2px solid #ffb84d";
     apellido_ok.innerHTML = ""
-    apellido_error.innerHTML = "<span>El apellido no puede estar vacio o contener espacios en blanco al comienzo</span>";
+    apellido_error.innerHTML = "<span>El apellido no puede contener espacios en blanco al comienzo</span>";
 
   } else if ((apellido.value.match(/[0-9]/i)) && (apellido.value != "")){
   apellido.style.border = "2px solid #ffb84d";
@@ -76,10 +76,10 @@ function emailVerify() {
 
 var regex = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 
-if (email.value.charAt(0) == "") {
+if (email.value.startsWith(" ")) {
     email.style.border = "2px solid #ffb84d";
     email_ok.innerHTML = ""
-    email_error.innerHTML = "<span>El email no puede estar vacio o contener espacios en blanco al comienzo</span>";
+    email_error.innerHTML = "<span>El email no puede contener espacios en blanco al comienzo</span>";
 
   } else if (!regex.test(email.value)) {
     email.style.border = "2px solid #ffb84d";
