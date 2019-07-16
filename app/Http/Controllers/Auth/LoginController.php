@@ -44,13 +44,14 @@ protected function validateLogin(Request $req){
     $this->validate($req, [
 
             'email' => 'required|exists:users|max:50',
-            'password' => 'required'
+            'password' => 'required|exists:users'
           ],
           [
             'email.required' => 'El email no puede estar vacio',
             'email.max' => 'El maximo de caracteres es 50',
             'email.exists' => 'El email no se encuentra registrado',
-            'password.required' => 'La contraseña no puede estar vacia'
+            'password.required' => 'La contraseña no puede estar vacia',
+            'password.exists' => 'La contraseña es incorrecta'
         ]
       );}
 
