@@ -661,7 +661,7 @@ input[type="file"] {
 
 .img-carousel {
 border-radius: 40px;
-
+border: 3px solid #440a7f;
 }
 /* Next & previous buttons */
 .prev, .next {
