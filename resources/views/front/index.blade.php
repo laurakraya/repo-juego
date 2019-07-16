@@ -12,22 +12,28 @@
       <div class="carousel-container">
           <!-- Imagenes tutorial -->
           <div class="tutorial-carousel fade">
-         
-            <img class="img-carousel" src="{{asset('/img/1.1.jpg')}}" style="width:100%">
-         
-          </div>
-         
-          <div class="tutorial-carousel fade">
-         
-            <img class="img-carousel" src="{{asset('/img/1.2.jpg')}}" style="width:100%">
+            
+            <img class="img-carousel" src="{{asset('/img/tutorial_01.png')}}" style="width:100%">
          
           </div>
          
           <div class="tutorial-carousel fade">
          
-            <img class="img-carousel" src="{{asset('/img/1.3.jpg')}}" style="width:100%">
+            <img class="img-carousel" src="{{asset('/img/tutorial_02.png')}}" style="width:100%">
          
           </div>
+         
+          <div class="tutorial-carousel fade">
+         
+            <img class="img-carousel" src="{{asset('/img/tutorial_03.png')}}" style="width:100%">
+         
+          </div>
+
+          <div class="tutorial-carousel fade">
+         
+              <img class="img-carousel" src="{{asset('/img/tutorial_04.png')}}" style="width:100%">
+           
+            </div>
          
           <!-- boton siguiente y anterior  -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
