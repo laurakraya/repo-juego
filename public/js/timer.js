@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
     
     });
     
-/*     timer.on('circle-animation-end', function(e) {
+    timer.on('circle-animation-end', function(e) {
     
       //Select token with getAttribute
       let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');;
@@ -89,7 +89,7 @@ window.addEventListener('load', function() {
     
       this.closest('form').submit();
     
-    }); */
+    });
 
 
 });
